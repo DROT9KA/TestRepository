@@ -2,14 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://D:\Lol\TestRepository\AndroidLessons.iml" filepath="D:\Lol\TestRepository\AndroidLessons.iml" />
       <module fileurl="file://$PROJECT_DIR$/TestRepository.iml" filepath="$PROJECT_DIR$/TestRepository.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://D:\Lol\TestRepository\app\app.iml" filepath="D:\Lol\TestRepository\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/p003firstproject/p003firstproject.iml" filepath="$PROJECT_DIR$/p003firstproject/p003firstproject.iml" />
-      <module fileurl="file://D:\Lol\TestRepository\p003firstproject\p003firstproject.iml" filepath="D:\Lol\TestRepository\p003firstproject\p003firstproject.iml" />
       <module fileurl="file://$PROJECT_DIR$/p0041basicviews/p0041basicviews.iml" filepath="$PROJECT_DIR$/p0041basicviews/p0041basicviews.iml" />
-      <module fileurl="file://D:\Lol\TestRepository\p0041basicviews\p0041basicviews.iml" filepath="D:\Lol\TestRepository\p0041basicviews\p0041basicviews.iml" />
+      <module fileurl="file://$PROJECT_DIR$/p0051layoutfiles/p0051layoutfiles.iml" filepath="$PROJECT_DIR$/p0051layoutfiles/p0051layoutfiles.iml" />
+      <module fileurl="file://$PROJECT_DIR$/p0061_layouts/p0061_layouts.iml" filepath="$PROJECT_DIR$/p0061_layouts/p0061_layouts.iml" />
+      <module fileurl="file://$PROJECT_DIR$/p0072_layoutproperties/p0072_layoutproperties.iml" filepath="$PROJECT_DIR$/p0072_layoutproperties/p0072_layoutproperties.iml" />
     </modules>
   </component>
 </project>
