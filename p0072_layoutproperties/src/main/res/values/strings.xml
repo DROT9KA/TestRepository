@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">P0072_LayoutProperties</string>
+    <string name="test_string">gravity = top righ</string>
 </resources>
