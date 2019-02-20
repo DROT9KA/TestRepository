@@ -1,1 +1,1 @@
-include ':app', ':clickbtnnewactivity', ':task_from_matway', ':testtask_skysoft'
+include ':app', ':testtask_skysoft'

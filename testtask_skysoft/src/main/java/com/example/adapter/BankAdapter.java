@@ -55,19 +55,11 @@ public class BankAdapter extends RecyclerView.Adapter<BankAdapter.BankViewHolder
     class BankViewHolder extends RecyclerView.ViewHolder {
 
         private TextView type;
-        private TextView cityRU;
-        private TextView cityUA;
-        private TextView cityEN;
-        private TextView fullAddressRu;
         private TextView fullAddressUa;
-        private TextView fullAddressEn;
-        private TextView placeRu;
         private TextView placeUa;
         private TextView latitude;
         private TextView longitude;
         private TextView timeWork;
-
-
 
         public BankViewHolder (View itemView){
             super(itemView);
