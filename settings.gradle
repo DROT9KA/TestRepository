@@ -1,1 +1,1 @@
-include ':app', ':p003firstproject', ':p0041basicviews', ':p0051layoutfiles', ':p0061_layouts', ':p0072_layoutproperties'
+include ':app', ':clickbtnnewactivity', ':task_from_matway', ':testtask_skysoft'

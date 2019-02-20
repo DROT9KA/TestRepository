@@ -1,0 +1,5 @@
+<resources>
+<string name="app_name">ClickBtnNewActivity</string>
+<string name="start">затовкли рошана</string>
+<string name="secondrosh">обнулити таймер</string>
+</resources>

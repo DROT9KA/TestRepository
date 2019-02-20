@@ -3,17 +3,16 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
+        <compositeConfiguration>
+          <compositeBuild compositeDefinitionSource="SCRIPT" />
+        </compositeConfiguration>
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/p003firstproject" />
-            <option value="$PROJECT_DIR$/p0041basicviews" />
-            <option value="$PROJECT_DIR$/p0051layoutfiles" />
-            <option value="$PROJECT_DIR$/p0061_layouts" />
-            <option value="$PROJECT_DIR$/p0072_layoutproperties" />
+            <option value="$PROJECT_DIR$/clickbtnnewactivity" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

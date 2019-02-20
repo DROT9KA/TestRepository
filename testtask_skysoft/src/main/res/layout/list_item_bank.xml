@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="2dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp">
+
+        <TextView
+            android:id="@+id/tv_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Type"/>
+
+        <TextView
+            android:id="@+id/tv_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_type"
+            android:text="Украiна,область Вiнницька,мiсто Вiнниця,вулиця Тарногородського,будинок 46" />
+
+        <TextView
+            android:id="@+id/tv_place_ua"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_address"
+            android:text="Вiддiлення банку"/>
+
+        <TextView
+            android:id="@+id/tv_latitude"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_place_ua"
+            android:text="широта"/>
+
+        <TextView
+            android:id="@+id/tv_longtitude"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_latitude"
+            android:text="довгота"/>
+
+        <TextView
+            android:id="@+id/tv_time_work"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_longtitude"
+            android:text="TW"/>
+
+        <!--<View-->
+            <!--android:id="@+id/view_ceparator"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="5dp"-->
+            <!--android:layout_below="@+id/tv_time_work"-->
+            <!--android:background="@color/ceparator"/>-->
+
+        </RelativeLayout>
+
+</android.support.v7.widget.CardView>

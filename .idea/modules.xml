@@ -4,11 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/TestRepository.iml" filepath="$PROJECT_DIR$/TestRepository.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/p003firstproject/p003firstproject.iml" filepath="$PROJECT_DIR$/p003firstproject/p003firstproject.iml" />
-      <module fileurl="file://$PROJECT_DIR$/p0041basicviews/p0041basicviews.iml" filepath="$PROJECT_DIR$/p0041basicviews/p0041basicviews.iml" />
-      <module fileurl="file://$PROJECT_DIR$/p0051layoutfiles/p0051layoutfiles.iml" filepath="$PROJECT_DIR$/p0051layoutfiles/p0051layoutfiles.iml" />
-      <module fileurl="file://$PROJECT_DIR$/p0061_layouts/p0061_layouts.iml" filepath="$PROJECT_DIR$/p0061_layouts/p0061_layouts.iml" />
-      <module fileurl="file://$PROJECT_DIR$/p0072_layoutproperties/p0072_layoutproperties.iml" filepath="$PROJECT_DIR$/p0072_layoutproperties/p0072_layoutproperties.iml" />
+      <module fileurl="file://$PROJECT_DIR$/clickbtnnewactivity/clickbtnnewactivity.iml" filepath="$PROJECT_DIR$/clickbtnnewactivity/clickbtnnewactivity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/task_from_matway/task_from_matway.iml" filepath="$PROJECT_DIR$/task_from_matway/task_from_matway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/testtask_skysoft/testtask_skysoft.iml" filepath="$PROJECT_DIR$/testtask_skysoft/testtask_skysoft.iml" />
     </modules>
   </component>
 </project>
