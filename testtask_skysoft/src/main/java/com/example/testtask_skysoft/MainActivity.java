@@ -5,8 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.example.Interface.PrivatBankAPI;
-import com.example.adapter.BankAdapter;
+import com.example.testtask_skysoft.interfaces.PrivatBankAPI;
+import com.example.testtask_skysoft.adapter.BankAdapter;
+import com.example.testtask_skysoft.models.BankList;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;

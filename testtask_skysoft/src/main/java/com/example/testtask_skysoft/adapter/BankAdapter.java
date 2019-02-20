@@ -1,4 +1,4 @@
-package com.example.adapter;
+package com.example.testtask_skysoft.adapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.testtask_skysoft.Bank;
+import com.example.testtask_skysoft.models.Bank;
 import com.example.testtask_skysoft.R;
 
 import java.util.ArrayList;

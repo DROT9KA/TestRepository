@@ -1,4 +1,4 @@
-package com.example.testtask_skysoft;
+package com.example.testtask_skysoft.models;
 
 public class TimeWork {
 
