@@ -21,8 +21,6 @@ import ua.study.awesome.androidlessons.testtask_skysoft.retrofit.MainRetrofit;
 
 public class FragmentBank extends Fragment {
 
-
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
