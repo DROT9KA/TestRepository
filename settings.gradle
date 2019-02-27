@@ -1,1 +1,1 @@
-include ':app', ':testtask_skysoft'
+include ':app'
