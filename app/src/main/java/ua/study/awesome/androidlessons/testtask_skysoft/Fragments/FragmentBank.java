@@ -43,7 +43,7 @@ public class FragmentBank extends Fragment {
 
             @Override
             public void onFailure(Call<BankList> call, Throwable t) {
-                String string = new String();
+                String str = new String();
             }
         });
 
