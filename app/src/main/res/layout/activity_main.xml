@@ -9,7 +9,7 @@
 
     <fragment
         android:id="@+id/fragment"
-        android:name="ua.study.awesome.androidlessons.testtask_skysoft.Fragments.FragmentBank"
+        android:name="ua.study.awesome.androidlessons.testtask_skysoft.fragments.FragmentBank"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 

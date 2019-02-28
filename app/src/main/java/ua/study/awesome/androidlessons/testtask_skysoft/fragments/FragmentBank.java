@@ -1,4 +1,4 @@
-package ua.study.awesome.androidlessons.testtask_skysoft.Fragments;
+package ua.study.awesome.androidlessons.testtask_skysoft.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
