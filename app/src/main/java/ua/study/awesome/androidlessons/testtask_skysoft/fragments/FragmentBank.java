@@ -16,6 +16,7 @@ import butterknife.Unbinder;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import ua.study.awesome.androidlessons.testtask_skysoft.MainActivity;
 import ua.study.awesome.androidlessons.testtask_skysoft.R;
 import ua.study.awesome.androidlessons.testtask_skysoft.adapter.BankAdapter;
 import ua.study.awesome.androidlessons.testtask_skysoft.interfaces.PrivatBankAPI;
@@ -35,7 +36,10 @@ public class FragmentBank extends Fragment {
         View v = inflater.inflate(R.layout.fragment_bank,container, false);
 
         unbinder = ButterKnife.bind(this, v);
+
         recyclerBanks.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        ((MainActivity) getActivity()).getSupportActionBar().setTitle("Title from the fragment");
 
         PrivatBankAPI privatBankAPI = MainRetrofit.getInstance().getRetrofit().create(PrivatBankAPI.class);
 
