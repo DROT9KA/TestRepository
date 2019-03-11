@@ -1,4 +1,4 @@
-package ua.study.awesome.androidlessons.testtask_skysoft.adapter;
+package ua.study.awesome.androidlessons.testtask_skysoft.ui.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -10,8 +10,8 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import ua.study.awesome.androidlessons.testtask_skysoft.R;
-import ua.study.awesome.androidlessons.testtask_skysoft.models.Bank;
-import ua.study.awesome.androidlessons.testtask_skysoft.view_holders.BankViewHolder;
+import ua.study.awesome.androidlessons.testtask_skysoft.data.response.Bank;
+import ua.study.awesome.androidlessons.testtask_skysoft.ui.view_holders.BankViewHolder;
 
 public class BankAdapter extends RecyclerView.Adapter<BankViewHolder>{
 

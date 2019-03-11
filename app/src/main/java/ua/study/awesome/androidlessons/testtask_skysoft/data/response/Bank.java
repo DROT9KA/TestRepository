@@ -1,4 +1,4 @@
-package ua.study.awesome.androidlessons.testtask_skysoft.models;
+package ua.study.awesome.androidlessons.testtask_skysoft.data.response;
 
 public class Bank {
 

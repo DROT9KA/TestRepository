@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">TestTask_SkySoft</string>
     <string name="time_work">123</string>
+    <string name="viewbank">viewBank</string>
 </resources>

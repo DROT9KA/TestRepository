@@ -1,4 +1,4 @@
-package ua.study.awesome.androidlessons.testtask_skysoft.view_holders;
+package ua.study.awesome.androidlessons.testtask_skysoft.ui.view_holders;
 
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
@@ -8,7 +8,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ua.study.awesome.androidlessons.testtask_skysoft.R;
-import ua.study.awesome.androidlessons.testtask_skysoft.models.Bank;
+import ua.study.awesome.androidlessons.testtask_skysoft.data.response.Bank;
 
 public class BankViewHolder extends RecyclerView.ViewHolder {
 

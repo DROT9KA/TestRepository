@@ -1,22 +1,15 @@
-package ua.study.awesome.androidlessons.testtask_skysoft;
+package ua.study.awesome.androidlessons.testtask_skysoft.ui;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
-import ua.study.awesome.androidlessons.testtask_skysoft.fragments.FragmentBank;
+import ua.study.awesome.androidlessons.testtask_skysoft.R;
+import ua.study.awesome.androidlessons.testtask_skysoft.ui.fragments.FragmentBank;
 
 public class MainActivity extends AppCompatActivity {
 
-    @Nullable @BindView(R.id.toolbar)
-    Toolbar toolbar;
-
-
-    FragmentBank fragmentBank;
     FragmentTransaction fragmentTransaction;
 
     @Override
@@ -25,18 +18,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
-        setSupportActionBar(toolbar);
 
-        fragmentBank = new FragmentBank();
         fragmInContainer();
 
-//        getSupportActionBar().setTitle("Title");
     }
 
     public void fragmInContainer(){
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
 
-        fragmentTransaction.add(R.id.fragm_container, fragmentBank);
+        fragmentTransaction.add(R.id.fragm_container, FragmentBank.newInstance("String of activity in the fragment"));
         fragmentTransaction.commit();
     }
 }
