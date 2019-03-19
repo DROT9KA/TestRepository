@@ -14,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import java.util.Random;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -74,6 +76,9 @@ public class FragmentBank extends Fragment {
 
         recyclerBanks.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        readBundle(getArguments());
+        ((MainActivity) getActivity()).getSupportActionBar().setTitle(String.format("%s", title));
+
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -83,18 +88,22 @@ public class FragmentBank extends Fragment {
                         presenter.loadBank();
                         refreshLayout.setRefreshing(false);
                     }
-                }, 1500);
+                }, 3000);
             }
         });
-
-        readBundle(getArguments());
-        ((MainActivity) getActivity()).getSupportActionBar().setTitle(String.format("%s", title));
     }
 
     public void onBanksLoaded(BankList bankList){
         BankAdapter adapter = new BankAdapter(getContext());
         adapter.setBanks(bankList.getBankList());
         recyclerBanks.setAdapter(adapter);
+
+        /*random background colors*/
+        int[] androidColors = getResources().getIntArray(R.array.androidcolors);
+        int randomAndroidColor = androidColors[new Random().nextInt(androidColors.length)];
+
+        recyclerBanks.setBackgroundColor(randomAndroidColor);
+        /*random background colors*/
     }
 
     public void makeItInvisibleProgressBar(){
@@ -102,6 +111,6 @@ public class FragmentBank extends Fragment {
     }
 
     public void showToast(){
-        Toast.makeText(getContext(), "loading error", Toast.LENGTH_LONG ).show();
+        Toast.makeText(getContext(), "loading error", Toast.LENGTH_LONG).show();
     }
 }
