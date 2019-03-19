@@ -2,4 +2,6 @@
     <string name="app_name">TestTask_SkySoft</string>
     <string name="time_work">123</string>
     <string name="viewbank">viewBank</string>
+    <string name="logout">Logout</string>
+    <string name="bank_list">Bank list</string>
 </resources>

@@ -88,7 +88,7 @@ public class FragmentBank extends Fragment {
                         presenter.loadBank();
                         refreshLayout.setRefreshing(false);
                     }
-                }, 3000);
+                }, 1600);
             }
         });
     }
