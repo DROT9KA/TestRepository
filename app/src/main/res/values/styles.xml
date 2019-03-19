@@ -8,4 +8,13 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+
+    <style name="SplashActivity" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_activity_background</item>
+    </style>
+
+    <style name="circular_progress" parent="Theme.AppCompat.Light">
+        <item name="colorAccent">@android:color/holo_green_light</item>
+    </style>
+
 </resources>

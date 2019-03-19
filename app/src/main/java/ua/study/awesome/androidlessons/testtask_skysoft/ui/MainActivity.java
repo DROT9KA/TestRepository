@@ -20,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         fragmInContainer();
-
     }
 
     public void fragmInContainer(){
