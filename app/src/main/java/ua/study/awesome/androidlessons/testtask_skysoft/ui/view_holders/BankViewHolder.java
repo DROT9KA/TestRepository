@@ -1,6 +1,5 @@
 package ua.study.awesome.androidlessons.testtask_skysoft.ui.view_holders;
 
-import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
@@ -12,17 +11,17 @@ import ua.study.awesome.androidlessons.testtask_skysoft.data.response.Bank;
 
 public class BankViewHolder extends RecyclerView.ViewHolder {
 
-    @Nullable @BindView(R.id.tv_time_work)
+    @BindView(R.id.tv_time_work)
     TextView timeWork;
-    @Nullable @BindView(R.id.tv_longtitude)
+    @BindView(R.id.tv_longtitude)
     TextView longitude;
-    @Nullable @BindView(R.id.tv_latitude)
+    @BindView(R.id.tv_latitude)
     TextView latitude;
-    @Nullable @BindView(R.id.tv_place_ua)
+    @BindView(R.id.tv_place_ua)
     TextView placeUa;
-    @Nullable @BindView(R.id.tv_type)
+    @BindView(R.id.tv_type)
     TextView type;
-    @Nullable @BindView(R.id.tv_address)
+    @BindView(R.id.tv_address)
     TextView fullAddressUa;
 
     public BankViewHolder (View itemView){

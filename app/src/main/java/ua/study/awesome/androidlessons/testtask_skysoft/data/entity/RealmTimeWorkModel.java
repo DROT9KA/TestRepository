@@ -1,6 +1,8 @@
-package ua.study.awesome.androidlessons.testtask_skysoft.data.response;
+package ua.study.awesome.androidlessons.testtask_skysoft.data.entity;
 
-public class TimeWork {
+import io.realm.RealmObject;
+
+public class RealmTimeWorkModel extends RealmObject {
 
     private String mon;
     private String tue;

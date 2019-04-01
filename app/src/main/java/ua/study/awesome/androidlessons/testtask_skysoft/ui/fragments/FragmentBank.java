@@ -1,7 +1,6 @@
 package ua.study.awesome.androidlessons.testtask_skysoft.ui.fragments;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -22,13 +21,12 @@ import butterknife.Unbinder;
 import ua.study.awesome.androidlessons.testtask_skysoft.R;
 import ua.study.awesome.androidlessons.testtask_skysoft.data.response.BankList;
 import ua.study.awesome.androidlessons.testtask_skysoft.presenters.BankPresenter;
-import ua.study.awesome.androidlessons.testtask_skysoft.presenters.PresenterInterface;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.MainActivity;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.adapter.BankAdapter;
 
 public class FragmentBank extends Fragment {
 
-    private PresenterInterface presenter;
+    private BankPresenter presenter;
 
     private String title;
 
@@ -82,13 +80,7 @@ public class FragmentBank extends Fragment {
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        presenter.loadBank();
-                        refreshLayout.setRefreshing(false);
-                    }
-                }, 1600);
+                presenter.loadBank();
             }
         });
     }
@@ -97,6 +89,7 @@ public class FragmentBank extends Fragment {
         BankAdapter adapter = new BankAdapter(getContext());
         adapter.setBanks(bankList.getBankList());
         recyclerBanks.setAdapter(adapter);
+        refreshLayout.setRefreshing(false);
 
         /*random background colors*/
         int[] androidColors = getResources().getIntArray(R.array.androidcolors);
@@ -106,7 +99,7 @@ public class FragmentBank extends Fragment {
         /*random background colors*/
     }
 
-    public void makeItInvisibleProgressBar(){
+    public void hideProgress(){
         progressBar.setVisibility(View.INVISIBLE);
     }
 

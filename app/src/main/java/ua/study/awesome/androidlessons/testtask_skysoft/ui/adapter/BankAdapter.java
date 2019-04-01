@@ -51,5 +51,4 @@ public class BankAdapter extends RecyclerView.Adapter<BankViewHolder>{
     public void setBanks(ArrayList<Bank> banks) {
         this.banks = banks;
     }
-
 }

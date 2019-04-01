@@ -10,8 +10,8 @@ public class BankList {
     private ArrayList<Bank> bankList;
 
     public ArrayList<Bank> getBankList() {
-        return bankList;
-    }
+    return bankList;
+}
 
     public void setBankList(ArrayList<Bank> bankList) {
         this.bankList = bankList;
