@@ -13,6 +13,8 @@ public class RealmTimeWorkModel extends RealmObject {
     private String sun;
     private String hol;
 
+    /*GETTERS & SETTERS*/
+
     public String getMon() {
         return mon;
     }

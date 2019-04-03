@@ -9,6 +9,8 @@ public class BankList {
     @SerializedName("devices")
     private ArrayList<Bank> bankList;
 
+    /*GETTERS & SETTERS*/
+
     public ArrayList<Bank> getBankList() {
     return bankList;
 }

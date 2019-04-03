@@ -13,13 +13,18 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import java.util.Objects;
 import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import io.realm.Realm;
+import io.realm.RealmResults;
 import ua.study.awesome.androidlessons.testtask_skysoft.R;
+import ua.study.awesome.androidlessons.testtask_skysoft.data.entity.RealmBankModel;
 import ua.study.awesome.androidlessons.testtask_skysoft.data.response.BankList;
+import ua.study.awesome.androidlessons.testtask_skysoft.interfaces.ClickListener;
 import ua.study.awesome.androidlessons.testtask_skysoft.presenters.BankPresenter;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.MainActivity;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.adapter.BankAdapter;
@@ -57,9 +62,22 @@ public class FragmentBank extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_bank,container, false);
         Unbinder unbinder = ButterKnife.bind(this, v);
+
+        Realm mRealm = Realm.getDefaultInstance();
+        final RealmResults<RealmBankModel> result = mRealm.where(RealmBankModel.class).findAll();
+
+        adapter = new BankAdapter(getContext());
+        adapter.setOnItemClickListener(new ClickListener() {
+            @Override
+            public void onItemClick(int position, View v) {
+                Toast.makeText(getContext(), position + 1 +  "-й банкомат Обрано", Toast.LENGTH_LONG).show();
+                showDetailFrag(position);
+            }
+        });
 
         init();
         presenter.loadBank();
@@ -75,7 +93,13 @@ public class FragmentBank extends Fragment {
         recyclerBanks.setLayoutManager(new LinearLayoutManager(getContext()));
 
         readBundle(getArguments());
-        ((MainActivity) getActivity()).getSupportActionBar().setTitle(String.format("%s", title));
+        Objects.requireNonNull(((MainActivity) Objects.requireNonNull(getActivity())).
+                getSupportActionBar()).setTitle(String.format("%s", title));
+
+        Objects.requireNonNull(((MainActivity) Objects.requireNonNull(getActivity())).
+                getSupportActionBar()).setHomeAsUpIndicator(R.drawable.ic_menu_white);
+
+        
 
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -85,8 +109,9 @@ public class FragmentBank extends Fragment {
         });
     }
 
+    private BankAdapter adapter;
+
     public void onBanksLoaded(BankList bankList){
-        BankAdapter adapter = new BankAdapter(getContext());
         adapter.setBanks(bankList.getBankList());
         recyclerBanks.setAdapter(adapter);
         refreshLayout.setRefreshing(false);
@@ -97,6 +122,13 @@ public class FragmentBank extends Fragment {
 
         recyclerBanks.setBackgroundColor(randomAndroidColor);
         /*random background colors*/
+    }
+
+    void showDetailFrag(int number){
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragm_container, DetailBankFragment.newInstance(number))
+                .addToBackStack(null)
+                .commit();
     }
 
     public void hideProgress(){

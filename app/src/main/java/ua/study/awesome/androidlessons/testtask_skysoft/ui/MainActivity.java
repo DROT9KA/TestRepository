@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         fragmInContainer();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu_white);
+//        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu_white);
 
     }
 
@@ -55,6 +55,10 @@ public class MainActivity extends AppCompatActivity {
 
                         menuItem.setChecked(true);
                         drawerLayout.closeDrawers();
+//                        fragmentTransaction = getSupportFragmentManager().beginTransaction();
+//                        fragmentTransaction.replace(R.id.fragm_container, new DetailBankFragment());
+//                        fragmentTransaction.addToBackStack(null);
+//                        fragmentTransaction.commit();
                         finish();
 
                         return true;

@@ -43,12 +43,12 @@
             android:layout_below="@+id/tv_latitude"
             android:text="довгота"/>
 
-        <TextView
-            android:id="@+id/tv_time_work"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_longtitude"
-            android:text="TW"/>
+        <!--<TextView-->
+            <!--android:id="@+id/tv_time_work"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@+id/tv_longtitude"-->
+            <!--android:text=""/>-->
 
         </RelativeLayout>
 

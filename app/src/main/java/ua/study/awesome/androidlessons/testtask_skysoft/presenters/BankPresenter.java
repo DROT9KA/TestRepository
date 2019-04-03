@@ -1,10 +1,17 @@
 package ua.study.awesome.androidlessons.testtask_skysoft.presenters;
 
+import android.support.annotation.NonNull;
+
 import io.realm.Realm;
+import io.realm.RealmList;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import ua.study.awesome.androidlessons.testtask_skysoft.data.entity.Model;
+import ua.study.awesome.androidlessons.testtask_skysoft.data.entity.RealmBankModel;
+import ua.study.awesome.androidlessons.testtask_skysoft.data.response.Bank;
 import ua.study.awesome.androidlessons.testtask_skysoft.data.response.BankList;
+import ua.study.awesome.androidlessons.testtask_skysoft.interfaces.PresenterInterface;
 import ua.study.awesome.androidlessons.testtask_skysoft.interfaces.PrivatBankAPI;
 import ua.study.awesome.androidlessons.testtask_skysoft.retrofit.MainRetrofit;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.fragments.FragmentBank;
@@ -12,6 +19,7 @@ import ua.study.awesome.androidlessons.testtask_skysoft.ui.fragments.FragmentBan
 public class BankPresenter implements PresenterInterface {
 
     private FragmentBank view;
+    private Model model = new Model();
 
     @Override
     public void attachView(FragmentBank fragmentBank){
@@ -25,17 +33,28 @@ public class BankPresenter implements PresenterInterface {
         Call<BankList> call = privatBankAPI.getBanks();
         call.enqueue(new Callback<BankList>() {
             @Override
-            public void onResponse(Call<BankList> call, Response<BankList> response) {
+            public void onResponse(@NonNull Call<BankList> call, @NonNull Response<BankList> response) {
                 Realm mRealm = Realm.getDefaultInstance();
                 mRealm.beginTransaction();
 
                 BankList bankList = response.body();
 
+                RealmList<RealmBankModel> realmBankModels = new RealmList<>();
+
+                if (bankList != null) {
+                    for (Bank banklist1: bankList.getBankList()) {
+                        realmBankModels.add(model.transformBank(banklist1));
+                    }
+                }
+
+                mRealm.insertOrUpdate(realmBankModels);
                 mRealm.commitTransaction();
                 mRealm.close();
 
                 view.onBanksLoaded(bankList);
                 view.hideProgress();
+
+
             }
 
             @Override
@@ -44,8 +63,5 @@ public class BankPresenter implements PresenterInterface {
             }
         });
     }
-    //                RealmBankModel realmBankModel = new RealmBankModel();
-//                RealmList<RealmBankModel> realmBankListModels = new RealmList<RealmBankModel>();
-//                realmBankListModels.addAll(realmBankListModels);
 
 }

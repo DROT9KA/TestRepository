@@ -5,10 +5,11 @@ import java.util.List;
 import io.realm.Realm;
 import ua.study.awesome.androidlessons.testtask_skysoft.data.response.Bank;
 import ua.study.awesome.androidlessons.testtask_skysoft.data.response.TimeWork;
+import ua.study.awesome.androidlessons.testtask_skysoft.interfaces.ModelInterface;
 
 public class Model implements ModelInterface {
 
-    @Override
+    @Override     /*саня сказав це зветься мапити*/
     public RealmBankModel transformBank(Bank bank) {
         if (bank == null) {
             throw new IllegalArgumentException("Cannot transform a null value");
@@ -33,7 +34,7 @@ public class Model implements ModelInterface {
     @Override
     public RealmTimeWorkModel transformBankTimeWork(TimeWork timeWork) {
         final RealmTimeWorkModel realmTimeWorkModel = new RealmTimeWorkModel();
-        if (timeWork == null) {
+        if (timeWork != null) {
             realmTimeWorkModel.setFri(timeWork.getFri());
             realmTimeWorkModel.setHol(timeWork.getHol());
             realmTimeWorkModel.setMon(timeWork.getMon());

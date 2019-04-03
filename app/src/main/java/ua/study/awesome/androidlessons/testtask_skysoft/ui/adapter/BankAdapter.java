@@ -11,9 +11,12 @@ import java.util.ArrayList;
 
 import ua.study.awesome.androidlessons.testtask_skysoft.R;
 import ua.study.awesome.androidlessons.testtask_skysoft.data.response.Bank;
+import ua.study.awesome.androidlessons.testtask_skysoft.interfaces.ClickListener;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.view_holders.BankViewHolder;
 
 public class BankAdapter extends RecyclerView.Adapter<BankViewHolder>{
+
+    private ClickListener clickListener;
 
     private ArrayList<Bank> banks;
 
@@ -33,7 +36,7 @@ public class BankAdapter extends RecyclerView.Adapter<BankViewHolder>{
     @Override
     public BankViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(context).inflate(R.layout.list_item_bank, viewGroup, false);
-        return new BankViewHolder(view);
+        return new BankViewHolder(view, clickListener);
     }
 
     @Override
@@ -50,5 +53,9 @@ public class BankAdapter extends RecyclerView.Adapter<BankViewHolder>{
 
     public void setBanks(ArrayList<Bank> banks) {
         this.banks = banks;
+    }
+
+    public void setOnItemClickListener(ClickListener clickListener) {
+        this.clickListener = clickListener;
     }
 }

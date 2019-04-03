@@ -4,6 +4,7 @@ import io.realm.RealmObject;
 
 public class RealmBankModel extends RealmObject {
 
+   // @PrimaryKey
     private String type;
     private String cityRU;
     private String cityUA;
@@ -16,6 +17,8 @@ public class RealmBankModel extends RealmObject {
     private double latitude;
     private double longitude;
     private RealmTimeWorkModel tw;
+
+    /*GETTERS & SETTERS*/
 
     public String getType() {
         return type;

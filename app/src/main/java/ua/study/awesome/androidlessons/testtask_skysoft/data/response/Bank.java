@@ -15,6 +15,8 @@ public class Bank {
     private double longitude;
     private TimeWork tw;
 
+    /*GETTERS & SETTERS*/
+
     public String getType() {
         return type;
     }
