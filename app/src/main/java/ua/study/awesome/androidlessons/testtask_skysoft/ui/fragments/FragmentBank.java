@@ -8,13 +8,13 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import java.util.Objects;
-import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -44,7 +44,7 @@ public class FragmentBank extends Fragment {
     @BindView(R.id.progress_bar)
     ProgressBar progressBar;
 
-    public static FragmentBank newInstance(String title){
+    public static FragmentBank newInstance(String title) {
         Bundle bundle = new Bundle();
         bundle.putString("TITLE", title);
 
@@ -54,8 +54,8 @@ public class FragmentBank extends Fragment {
         return fragmentBank;
     }
 
-    private void readBundle(Bundle bundle){
-        if(bundle != null){
+    private void readBundle(Bundle bundle) {
+        if (bundle != null) {
             title = bundle.getString("TITLE");
         }
     }
@@ -64,8 +64,10 @@ public class FragmentBank extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_bank,container, false);
+        View v = inflater.inflate(R.layout.fragment_bank, container, false);
         Unbinder unbinder = ButterKnife.bind(this, v);
+
+        setHasOptionsMenu(true);
 
         Realm mRealm = Realm.getDefaultInstance();
         final RealmResults<RealmBankModel> result = mRealm.where(RealmBankModel.class).findAll();
@@ -74,7 +76,7 @@ public class FragmentBank extends Fragment {
         adapter.setOnItemClickListener(new ClickListener() {
             @Override
             public void onItemClick(int position, View v) {
-                Toast.makeText(getContext(), position + 1 +  "-й банкомат Обрано", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), position + 1 + "-й банкомат обрано", Toast.LENGTH_LONG).show();
                 showDetailFrag(position);
             }
         });
@@ -85,21 +87,18 @@ public class FragmentBank extends Fragment {
         return v;
     }
 
-    public void init(){
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
 
-        presenter = new BankPresenter();
-        presenter.attachView(this);
+                return true;
+        }
 
-        recyclerBanks.setLayoutManager(new LinearLayoutManager(getContext()));
+        return super.onOptionsItemSelected(item);
+    }
 
-        readBundle(getArguments());
-        Objects.requireNonNull(((MainActivity) Objects.requireNonNull(getActivity())).
-                getSupportActionBar()).setTitle(String.format("%s", title));
-
-        Objects.requireNonNull(((MainActivity) Objects.requireNonNull(getActivity())).
-                getSupportActionBar()).setHomeAsUpIndicator(R.drawable.ic_menu_white);
-
-        
+    public void init() {
 
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -107,35 +106,52 @@ public class FragmentBank extends Fragment {
                 presenter.loadBank();
             }
         });
+
+        presenter = new BankPresenter();
+        presenter.attachView(this);
+
+        recyclerBanks.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        readBundle(getArguments());
+
+        Objects.requireNonNull(((MainActivity) Objects.requireNonNull(getActivity())).
+                getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+
+        Objects.requireNonNull(((MainActivity) Objects.requireNonNull(getActivity())).
+                getSupportActionBar()).setHomeAsUpIndicator(R.drawable.ic_menu_white);
+
+        Objects.requireNonNull(((MainActivity) Objects.requireNonNull(getActivity())).
+                getSupportActionBar()).setTitle(String.format("%s", title));
+
     }
 
     private BankAdapter adapter;
 
-    public void onBanksLoaded(BankList bankList){
+    public void onBanksLoaded(BankList bankList) {
         adapter.setBanks(bankList.getBankList());
         recyclerBanks.setAdapter(adapter);
         refreshLayout.setRefreshing(false);
 
         /*random background colors*/
-        int[] androidColors = getResources().getIntArray(R.array.androidcolors);
-        int randomAndroidColor = androidColors[new Random().nextInt(androidColors.length)];
-
-        recyclerBanks.setBackgroundColor(randomAndroidColor);
+//        int[] androidColors = getResources().getIntArray(R.array.androidcolors);
+//        int randomAndroidColor = androidColors[new Random().nextInt(androidColors.length)];
+//
+//        recyclerBanks.setBackgroundColor(randomAndroidColor);
         /*random background colors*/
     }
 
-    void showDetailFrag(int number){
-        getActivity().getSupportFragmentManager().beginTransaction()
+    void showDetailFrag(int number) {
+        Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragm_container, DetailBankFragment.newInstance(number))
                 .addToBackStack(null)
                 .commit();
     }
 
-    public void hideProgress(){
+    public void hideProgress() {
         progressBar.setVisibility(View.INVISIBLE);
     }
 
-    public void showToast(){
-        Toast.makeText(getContext(), "loading error", Toast.LENGTH_LONG).show();
+    public void showToast() {
+        Toast.makeText(getContext(), "Loading error", Toast.LENGTH_LONG).show();
     }
 }

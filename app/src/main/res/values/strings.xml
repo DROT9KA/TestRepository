@@ -4,4 +4,6 @@
     <string name="viewbank">viewBank</string>
     <string name="logout">Logout</string>
     <string name="bank_list">Bank list</string>
+    <string name="sort_array">Click to sort array</string>
+    <string name="sort_list">Click to sort list</string>
 </resources>

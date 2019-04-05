@@ -1,15 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:layout_margin="2dp">
 
-    <TextView
-        android:padding="8dp"
-        android:id="@+id/detail_info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Тут буде інфа"
-        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/detail_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="Тут буде інфа" />
+
+        <Button
+            android:id="@+id/btn_sort_array"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/detail_info"
+            android:gravity="center"
+            android:text="@string/sort_array" />
+
+        <Button
+            android:id="@+id/btn_sort_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/detail_info"
+            android:layout_toEndOf="@+id/btn_sort_array"
+            android:gravity="center"
+            android:text="@string/sort_list" />
+
+    </RelativeLayout>
 
 </android.support.v7.widget.CardView>

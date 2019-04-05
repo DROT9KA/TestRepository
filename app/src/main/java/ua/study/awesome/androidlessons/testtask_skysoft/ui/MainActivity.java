@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
@@ -35,19 +34,17 @@ public class MainActivity extends AppCompatActivity {
 
         fragmInContainer();
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu_white);
-
     }
 
-    public void fragmInContainer(){
+    public void fragmInContainer() {
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
 
         fragmentTransaction.add(R.id.fragm_container, FragmentBank.newInstance("Privat ATM"));
         fragmentTransaction.commit();
+
     }
 
-    public void navigationItemListen(){
+    public void navigationItemListen() {
         navigationView.setNavigationItemSelectedListener
                 (new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
@@ -55,10 +52,6 @@ public class MainActivity extends AppCompatActivity {
 
                         menuItem.setChecked(true);
                         drawerLayout.closeDrawers();
-//                        fragmentTransaction = getSupportFragmentManager().beginTransaction();
-//                        fragmentTransaction.replace(R.id.fragm_container, new DetailBankFragment());
-//                        fragmentTransaction.addToBackStack(null);
-//                        fragmentTransaction.commit();
                         finish();
 
                         return true;
@@ -66,15 +59,20 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                drawerLayout.openDrawer(GravityCompat.START);
-                return true;
-        }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch (item.getItemId()) {
+//            case android.R.id.home:
+//                    drawerLayout.openDrawer(GravityCompat.START);
+//                    return true;
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
 
-        return super.onOptionsItemSelected(item);
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 
 }
