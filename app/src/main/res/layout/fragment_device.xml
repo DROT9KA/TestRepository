@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/edt_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="15"
+        android:hint="@string/search"
+        android:drawableLeft="@android:drawable/ic_menu_search"
+        android:background="@android:drawable/editbox_background_normal"
+        android:textCursorDrawable="@drawable/custom_edit_text_cursor"
+        android:inputType="text" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_device"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edt_search"
+        android:scrollbars="vertical" />
+
+    <TextView
+        android:id="@+id/tv_empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible"
+        android:textSize="25dp"
+        android:text="Empty List"/>
+
+</RelativeLayout>

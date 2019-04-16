@@ -28,7 +28,7 @@ import ua.study.awesome.androidlessons.testtask_skysoft.ui.MainActivity;
 
 public class DetailBankFragment extends Fragment {
 
-    DetailBankPresenter presenter;
+    private DetailBankPresenter presenter;
 
     private int number;
 
@@ -76,7 +76,7 @@ public class DetailBankFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                getActivity().onBackPressed();
+                Objects.requireNonNull(getActivity()).onBackPressed();
                 return true;
         }
 

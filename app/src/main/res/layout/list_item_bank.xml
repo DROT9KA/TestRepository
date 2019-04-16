@@ -4,16 +4,16 @@
     android:layout_height="wrap_content"
     android:layout_margin="2dp">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="8dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
 
         <TextView
             android:id="@+id/tv_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Type"/>
+            android:text="Type" />
 
         <TextView
             android:id="@+id/tv_address"
@@ -27,29 +27,29 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_address"
-            android:text="Вiддiлення банку"/>
+            android:text="Вiддiлення банку" />
 
         <TextView
             android:id="@+id/tv_latitude"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_place_ua"
-            android:text="широта"/>
+            android:text="широта" />
 
         <TextView
             android:id="@+id/tv_longtitude"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_latitude"
-            android:text="довгота"/>
+            android:text="довгота" />
 
         <!--<TextView-->
-            <!--android:id="@+id/tv_time_work"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_below="@+id/tv_longtitude"-->
-            <!--android:text=""/>-->
+        <!--android:id="@+id/tv_time_work"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/tv_longtitude"-->
+        <!--android:text=""/>-->
 
-        </RelativeLayout>
+    </RelativeLayout>
 
 </android.support.v7.widget.CardView>

@@ -14,7 +14,7 @@ import ua.study.awesome.androidlessons.testtask_skysoft.data.response.Bank;
 import ua.study.awesome.androidlessons.testtask_skysoft.interfaces.ClickListener;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.view_holders.BankViewHolder;
 
-public class BankAdapter extends RecyclerView.Adapter<BankViewHolder>{
+public class BankAdapter extends RecyclerView.Adapter<BankViewHolder> {
 
     private ClickListener clickListener;
 
@@ -25,11 +25,6 @@ public class BankAdapter extends RecyclerView.Adapter<BankViewHolder>{
     public BankAdapter(Context context) {
         this.context = context;
         banks = new ArrayList<>();
-    }
-
-    public BankAdapter(ArrayList<Bank> banks) {
-        this.banks = new ArrayList<>();
-        this.banks = banks;
     }
 
     @NonNull

@@ -11,14 +11,16 @@ import android.view.MenuItem;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ua.study.awesome.androidlessons.testtask_skysoft.R;
-import ua.study.awesome.androidlessons.testtask_skysoft.ui.fragments.FragmentBank;
+import ua.study.awesome.androidlessons.testtask_skysoft.ui.fragments.BankFragment;
+import ua.study.awesome.androidlessons.testtask_skysoft.ui.fragments.DeviceFragment;
+import ua.study.awesome.androidlessons.testtask_skysoft.ui.fragments.SpannableStringFragment;
 
 public class MainActivity extends AppCompatActivity {
 
-    FragmentTransaction fragmentTransaction;
+    private FragmentTransaction fragmentTransaction;
 
     @BindView(R.id.drawer_layout)
-    DrawerLayout drawerLayout;
+    public DrawerLayout drawerLayout;
 
     @BindView(R.id.nav_view)
     NavigationView navigationView;
@@ -32,16 +34,9 @@ public class MainActivity extends AppCompatActivity {
 
         navigationItemListen();
 
-        fragmInContainer();
-
-    }
-
-    public void fragmInContainer() {
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
-
-        fragmentTransaction.add(R.id.fragm_container, FragmentBank.newInstance("Privat ATM"));
+        fragmentTransaction.add(R.id.fragm_container, BankFragment.newInstance("Privat ATM"));
         fragmentTransaction.commit();
-
     }
 
     public void navigationItemListen() {
@@ -50,29 +45,55 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
-                        menuItem.setChecked(true);
+                        if (menuItem.isChecked()){
+                            menuItem.setChecked(false);
+                        } else {
+                            menuItem.setChecked(true);
+
+                            switch (menuItem.getItemId()) {
+                                case R.id.nav_bank:
+                                    bankFragmInContainer();
+                                    break;
+                                case R.id.nav_device:
+                                    deviceFragmInContainer();
+                                    break;
+                                case R.id.nav_spannable:
+                                    spannableFragmInContainer();
+                                    break;
+                                case R.id.nav_logout:
+                                    finish();
+                                    break;
+
+                            }
+                        }
                         drawerLayout.closeDrawers();
-                        finish();
 
                         return true;
                     }
                 });
     }
 
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        switch (item.getItemId()) {
-//            case android.R.id.home:
-//                    drawerLayout.openDrawer(GravityCompat.START);
-//                    return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
+    public void bankFragmInContainer() {
+        fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.fragm_container, BankFragment.newInstance("Privat ATM"));
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+
+    }
+
+    public void deviceFragmInContainer() {
+        fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.fragm_container, new DeviceFragment());
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
+
+    public void spannableFragmInContainer() {
+        fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.fragm_container, new SpannableStringFragment());
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 
 }

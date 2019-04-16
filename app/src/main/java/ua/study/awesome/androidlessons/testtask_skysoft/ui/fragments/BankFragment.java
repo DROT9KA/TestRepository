@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -29,11 +30,13 @@ import ua.study.awesome.androidlessons.testtask_skysoft.presenters.BankPresenter
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.MainActivity;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.adapter.BankAdapter;
 
-public class FragmentBank extends Fragment {
+public class BankFragment extends Fragment {
 
     private BankPresenter presenter;
 
     private String title;
+
+    private BankAdapter adapter;
 
     @BindView(R.id.swipe_container)
     SwipeRefreshLayout refreshLayout;
@@ -44,14 +47,14 @@ public class FragmentBank extends Fragment {
     @BindView(R.id.progress_bar)
     ProgressBar progressBar;
 
-    public static FragmentBank newInstance(String title) {
+    public static BankFragment newInstance(String title) {
         Bundle bundle = new Bundle();
         bundle.putString("TITLE", title);
 
-        FragmentBank fragmentBank = new FragmentBank();
-        fragmentBank.setArguments(bundle);
+        BankFragment bankFragment = new BankFragment();
+        bankFragment.setArguments(bundle);
 
-        return fragmentBank;
+        return bankFragment;
     }
 
     private void readBundle(Bundle bundle) {
@@ -76,7 +79,6 @@ public class FragmentBank extends Fragment {
         adapter.setOnItemClickListener(new ClickListener() {
             @Override
             public void onItemClick(int position, View v) {
-                Toast.makeText(getContext(), position + 1 + "-й банкомат обрано", Toast.LENGTH_LONG).show();
                 showDetailFrag(position);
             }
         });
@@ -91,7 +93,7 @@ public class FragmentBank extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-
+                ((MainActivity) Objects.requireNonNull(getActivity())).drawerLayout.openDrawer(GravityCompat.START);
                 return true;
         }
 
@@ -99,7 +101,6 @@ public class FragmentBank extends Fragment {
     }
 
     public void init() {
-
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -119,13 +120,11 @@ public class FragmentBank extends Fragment {
 
         Objects.requireNonNull(((MainActivity) Objects.requireNonNull(getActivity())).
                 getSupportActionBar()).setHomeAsUpIndicator(R.drawable.ic_menu_white);
+        //    R.drawable.point_vert_white_24dp
 
         Objects.requireNonNull(((MainActivity) Objects.requireNonNull(getActivity())).
                 getSupportActionBar()).setTitle(String.format("%s", title));
-
     }
-
-    private BankAdapter adapter;
 
     public void onBanksLoaded(BankList bankList) {
         adapter.setBanks(bankList.getBankList());

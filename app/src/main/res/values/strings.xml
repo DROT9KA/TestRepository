@@ -5,5 +5,38 @@
     <string name="logout">Logout</string>
     <string name="bank_list">Bank list</string>
     <string name="sort_array">Click to sort array</string>
-    <string name="sort_list">Click to sort list</string>
+    <string name="sort_list">Click to + sort list</string>
+    <string name="bank">Bank</string>
+    <string name="device">Device</string>
+
+    <string name="xiaomi_description">Xiaomi Corporation (/ˈʃaʊmiː/;[2] Chinese: 小米 [ɕjǎu.mì]
+        (About this soundlisten)) is a Chinese electronics company headquartered in Beijing.
+        Xiaomi makes and invests in smartphones, mobile apps, laptops, and related consumer
+        electronics.[3]</string>
+
+    <string name="samsung_description">Samsung (Hangul: 삼성; Hanja: 三星; Korean pronunciation:
+        [samsʌŋ]; means "tristar" in English) is a South Korean multinational conglomerate
+        headquartered in Samsung Town, Seoul.[1] It comprises numerous affiliated businesses,
+        [1] most of them united under the Samsung brand, and is the largest South Korean chaebol
+        (business conglomerate).</string>
+
+    <string name="iphone_description">iPhone (/ˈaɪfoʊn/ EYE-fone) is a line of smartphones
+        designedand marketed by Apple Inc. All generations of the iPhone use Apple.s iOS mobile
+        operating system software. The first-generation iPhone
+        was released on June 29, 2007,and multiple new hardware
+        iterations with new iOS releases have been released since.</string>
+
+    <string name="huawei_description">Huawei Technologies Co. Ltd. (/ˈhwɑːˌweɪ/; simplified Chinese:
+        华为; traditional Chinese: 華為; pinyin: About this soundHuáwéi) is a Chinese multinational
+        telecommunications equipment and consumer electronics manufacturer,
+        headquartered in Shenzhen, China.</string>
+
+    <string name="nokia_description">Nokia Corporation (commonly referred to as Nokia;
+        UK: /ˈnɒkiə/, US: /ˈnoʊkiə/, Finnish: [ˈnokiɑ]) is a Finnish multinational
+        telecommunications, information technology, and consumer electronics company,
+        founded in 1865. Nokia.s headquarters are in Espoo, in the greater Helsinki
+        metropolitan area.</string>
+    <string name="search">Search</string>
+    <string name="spannable">Spannable</string>
+
 </resources>

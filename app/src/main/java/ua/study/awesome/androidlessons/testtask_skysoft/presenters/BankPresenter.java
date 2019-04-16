@@ -14,16 +14,16 @@ import ua.study.awesome.androidlessons.testtask_skysoft.data.response.BankList;
 import ua.study.awesome.androidlessons.testtask_skysoft.interfaces.PresenterInterface;
 import ua.study.awesome.androidlessons.testtask_skysoft.interfaces.PrivatBankAPI;
 import ua.study.awesome.androidlessons.testtask_skysoft.retrofit.MainRetrofit;
-import ua.study.awesome.androidlessons.testtask_skysoft.ui.fragments.FragmentBank;
+import ua.study.awesome.androidlessons.testtask_skysoft.ui.fragments.BankFragment;
 
 public class BankPresenter implements PresenterInterface {
 
-    private FragmentBank view;
+    private BankFragment view;
     private Model model = new Model();
 
     @Override
-    public void attachView(FragmentBank fragmentBank){
-        view = fragmentBank;
+    public void attachView(BankFragment bankFragment){
+        view = bankFragment;
     }
 
     @Override
