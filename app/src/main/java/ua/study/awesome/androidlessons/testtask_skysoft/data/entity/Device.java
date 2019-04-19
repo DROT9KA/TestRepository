@@ -2,9 +2,9 @@ package ua.study.awesome.androidlessons.testtask_skysoft.data.entity;
 
 public class Device {
 
-    int id;
-    String name;
-    String description;
+    private int id;
+    private String name;
+    private String description;
 
     public Device(int id, String name, String description){
 
@@ -12,6 +12,12 @@ public class Device {
         this.name = name;
         this.description = description;
 
+    }
+
+    public Device(Device device) {
+        this.id = device.getId();
+        this.name = device.getName();
+        this.description = device.getDescription();
     }
 
     public int getId() {

@@ -63,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
                                 case R.id.nav_logout:
                                     finish();
                                     break;
-
                             }
                         }
                         drawerLayout.closeDrawers();

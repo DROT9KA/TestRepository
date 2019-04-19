@@ -15,7 +15,7 @@ import ua.study.awesome.androidlessons.testtask_skysoft.ui.view_holders.DeviceVi
 
 public class DeviceAdapter extends RecyclerView.Adapter<DeviceViewHolder> {
 
-    private ArrayList<Device> devices;
+    protected ArrayList<Device> devices;
 
     private Context context;
 
@@ -44,7 +44,11 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceViewHolder> {
     }
 
     public void setDevices(ArrayList<Device> devices) {
-        this.devices = devices;
+        this.devices = new ArrayList<>(devices);
+    }
+
+    public ArrayList<Device> getDevices() {
+        return devices;
     }
 
     public void removeDevices(){
