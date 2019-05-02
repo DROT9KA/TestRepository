@@ -6,8 +6,8 @@
     <string name="bank_list">Bank list</string>
     <string name="sort_array">Click to sort array</string>
     <string name="sort_list">Click to + sort list</string>
-    <string name="bank">Bank</string>
-    <string name="device">Device</string>
+    <string name="bankResponse">Bank</string>
+    <string name="deviceEntity">Device</string>
 
     <string name="xiaomi_description">Xiaomi Corporation (/ˈʃaʊmiː/;[2] Chinese: 小米 [ɕjǎu.mì]
         (About this soundlisten)) is a Chinese electronics company headquartered in Beijing.

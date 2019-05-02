@@ -4,35 +4,35 @@ import android.widget.Filter;
 
 import java.util.ArrayList;
 
-import ua.study.awesome.androidlessons.testtask_skysoft.data.entity.Device;
+import ua.study.awesome.androidlessons.testtask_skysoft.data.entity.DeviceEntity;
 
 public class DeviceFilter extends Filter {
 
-    private ArrayList<Device> originalDevices;
-    private ArrayList<Device> filterableDevices;
+    private ArrayList<DeviceEntity> originalDeviceEntities;
+    private ArrayList<DeviceEntity> filterableDeviceEntities;
     private String spannableStr = "";
     private DeviceAdapter adapter;
 
-    public DeviceFilter(DeviceAdapter adapter, ArrayList<Device> data) {
+    public DeviceFilter(DeviceAdapter adapter, ArrayList<DeviceEntity> data) {
         this.adapter = adapter;
-        this.originalDevices = new ArrayList<>(data);
-        this.filterableDevices = new ArrayList<>(data);
+        this.originalDeviceEntities = new ArrayList<>(data);
+        this.filterableDeviceEntities = new ArrayList<>(data);
     }
 
-    public ArrayList<Device> getOriginalDevices() {
-        return originalDevices;
+    public ArrayList<DeviceEntity> getOriginalDeviceEntities() {
+        return originalDeviceEntities;
     }
 
-    public void setOriginalDevices(ArrayList<Device> originalDevices) {
-        this.originalDevices = originalDevices;
+    public void setOriginalDeviceEntities(ArrayList<DeviceEntity> originalDeviceEntities) {
+        this.originalDeviceEntities = originalDeviceEntities;
     }
 
-    public ArrayList<Device> getFilterableDevices() {
-        return filterableDevices;
+    public ArrayList<DeviceEntity> getFilterableDeviceEntities() {
+        return filterableDeviceEntities;
     }
 
-    public void setFilterableDevices(ArrayList<Device> filterableDevices) {
-        this.filterableDevices = filterableDevices;
+    public void setFilterableDeviceEntities(ArrayList<DeviceEntity> filterableDeviceEntities) {
+        this.filterableDeviceEntities = filterableDeviceEntities;
     }
 
     @Override
@@ -44,16 +44,16 @@ public class DeviceFilter extends Filter {
 
         FilterResults results = new FilterResults();
 
-        final ArrayList<Device> devices = new ArrayList<>();
+        final ArrayList<DeviceEntity> deviceEntities = new ArrayList<>();
 
-        for(Device device: originalDevices){
-            if (device.getName().toLowerCase().contains(filterString)){
-                devices.add(device);
+        for(DeviceEntity deviceEntity : originalDeviceEntities){
+            if (deviceEntity.getName().toLowerCase().contains(filterString)){
+                deviceEntities.add(deviceEntity);
             }
         }
 
-        results.values = devices;
-        results.count = devices.size();
+        results.values = deviceEntities;
+        results.count = deviceEntities.size();
 
         return results;
     }
@@ -64,8 +64,8 @@ public class DeviceFilter extends Filter {
 
     @Override
     protected void publishResults(CharSequence constraint, FilterResults results) {
-        setFilterableDevices((ArrayList<Device>) results.values);
-        adapter.setDevices(filterableDevices);
+        setFilterableDeviceEntities((ArrayList<DeviceEntity>) results.values);
+        adapter.setDeviceEntities(filterableDeviceEntities);
     }
 
 }

@@ -7,7 +7,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ua.study.awesome.androidlessons.testtask_skysoft.R;
-import ua.study.awesome.androidlessons.testtask_skysoft.data.response.Bank;
+import ua.study.awesome.androidlessons.testtask_skysoft.data.response.BankResponse;
 import ua.study.awesome.androidlessons.testtask_skysoft.interfaces.ClickListener;
 
 public class BankViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -32,12 +32,12 @@ public class BankViewHolder extends RecyclerView.ViewHolder implements View.OnCl
         itemView.setOnClickListener(this);
     }
 
-    public void onBindBank(Bank bank){
-        latitude.setText("Широта - " + bank.getLatitude());
-        longitude.setText("Довгота - " + bank.getLongitude());
-        placeUa.setText(bank.getPlaceUa());
-        type.setText(bank.getType());
-        fullAddressUa.setText(bank.getFullAddressUa());
+    public void onBindBank(BankResponse bankResponse){
+        latitude.setText("Широта - " + bankResponse.getLatitude());
+        longitude.setText("Довгота - " + bankResponse.getLongitude());
+        placeUa.setText(bankResponse.getPlaceUa());
+        type.setText(bankResponse.getType());
+        fullAddressUa.setText(bankResponse.getFullAddressUa());
     }
 
     @Override

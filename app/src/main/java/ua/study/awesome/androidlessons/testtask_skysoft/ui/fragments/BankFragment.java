@@ -23,10 +23,10 @@ import butterknife.Unbinder;
 import io.realm.Realm;
 import io.realm.RealmResults;
 import ua.study.awesome.androidlessons.testtask_skysoft.R;
-import ua.study.awesome.androidlessons.testtask_skysoft.data.entity.RealmBankModel;
-import ua.study.awesome.androidlessons.testtask_skysoft.data.response.BankList;
+import ua.study.awesome.androidlessons.testtask_skysoft.data.entity.RealmBankModelEntity;
+import ua.study.awesome.androidlessons.testtask_skysoft.data.response.BankListResponse;
 import ua.study.awesome.androidlessons.testtask_skysoft.interfaces.ClickListener;
-import ua.study.awesome.androidlessons.testtask_skysoft.presenters.BankPresenter;
+import ua.study.awesome.androidlessons.testtask_skysoft.data.presenters.BankPresenter;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.MainActivity;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.adapter.BankAdapter;
 
@@ -73,7 +73,7 @@ public class BankFragment extends Fragment {
         setHasOptionsMenu(true);
 
         Realm mRealm = Realm.getDefaultInstance();
-        final RealmResults<RealmBankModel> result = mRealm.where(RealmBankModel.class).findAll();
+        final RealmResults<RealmBankModelEntity> result = mRealm.where(RealmBankModelEntity.class).findAll();
 
         adapter = new BankAdapter(getContext());
         adapter.setOnItemClickListener(new ClickListener() {
@@ -126,8 +126,8 @@ public class BankFragment extends Fragment {
                 getSupportActionBar()).setTitle(String.format("%s", title));
     }
 
-    public void onBanksLoaded(BankList bankList) {
-        adapter.setBanks(bankList.getBankList());
+    public void onBanksLoaded(BankListResponse bankListResponse) {
+        adapter.setBankResponses(bankListResponse.getBankResponseList());
         recyclerBanks.setAdapter(adapter);
         refreshLayout.setRefreshing(false);
 

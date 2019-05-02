@@ -17,12 +17,12 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import ua.study.awesome.androidlessons.testtask_skysoft.R;
-import ua.study.awesome.androidlessons.testtask_skysoft.data.entity.Device;
+import ua.study.awesome.androidlessons.testtask_skysoft.data.entity.DeviceEntity;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.view_holders.DeviceViewHolder;
 
 public class DeviceAdapter extends RecyclerView.Adapter<DeviceViewHolder> implements Filterable {
 
-    private ArrayList<Device> devices;
+    private ArrayList<DeviceEntity> deviceEntities;
 
     private Context context;
 
@@ -30,7 +30,7 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceViewHolder> implem
 
     public DeviceAdapter(Context context) {
         this.context = context;
-//        this.devices = new ArrayList<>(dev);
+//        this.deviceEntities = new ArrayList<>(dev);
     }
 
     @NonNull
@@ -42,13 +42,13 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceViewHolder> implem
 
     @Override
     public void onBindViewHolder(@NonNull DeviceViewHolder deviceViewHolder, int i) {
-        Device device = devices.get(i);
+        DeviceEntity deviceEntity = deviceEntities.get(i);
 
-        deviceViewHolder.onBindDevice(device);
+        deviceViewHolder.onBindDevice(deviceEntity);
 
         TextView textView = deviceViewHolder.name;
         String letter = deviceFilter.getSpannableStr();
-        String stName = device.getName();
+        String stName = deviceEntity.getName();
 
         SpannableString span = new SpannableString(stName);
 
@@ -64,12 +64,12 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceViewHolder> implem
 
     @Override
     public int getItemCount() {
-        return devices.size();
+        return deviceEntities.size();
     }
 
-    public void setDevices(ArrayList<Device> devices) {
-        this.devices = new ArrayList<>(devices);
-        deviceFilter = new DeviceFilter(this, devices);
+    public void setDeviceEntities(ArrayList<DeviceEntity> deviceEntities) {
+        this.deviceEntities = new ArrayList<>(deviceEntities);
+        deviceFilter = new DeviceFilter(this, deviceEntities);
         notifyDataSetChanged();
     }
 
@@ -77,17 +77,17 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceViewHolder> implem
 
     }
 
-    public ArrayList<Device> getDevices() {
-        return devices;
+    public ArrayList<DeviceEntity> getDeviceEntities() {
+        return deviceEntities;
     }
 
     public void removeDevices(){
-        this.devices.clear();
+        this.deviceEntities.clear();
         notifyDataSetChanged();
     }
 
-    public void filterList(ArrayList<Device> filteredList){
-        devices = filteredList;
+    public void filterList(ArrayList<DeviceEntity> filteredList){
+        deviceEntities = filteredList;
         notifyDataSetChanged();
     }
 

@@ -7,7 +7,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ua.study.awesome.androidlessons.testtask_skysoft.R;
-import ua.study.awesome.androidlessons.testtask_skysoft.data.entity.Device;
+import ua.study.awesome.androidlessons.testtask_skysoft.data.entity.DeviceEntity;
 
 public class DeviceViewHolder extends RecyclerView.ViewHolder {
 
@@ -23,10 +23,10 @@ public class DeviceViewHolder extends RecyclerView.ViewHolder {
         ButterKnife.bind(this, itemView);
     }
 
-    public void onBindDevice(Device device){
-        id.setText("Id: " + device.getId());
-        name.setText("Name: "+ device.getName());
-        description.setText("Description: " + device.getDescription());
+    public void onBindDevice(DeviceEntity deviceEntity){
+        id.setText("Id: " + deviceEntity.getId());
+        name.setText("Name: "+ deviceEntity.getName());
+        description.setText("Description: " + deviceEntity.getDescription());
     }
 
 }

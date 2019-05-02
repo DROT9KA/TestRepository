@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import ua.study.awesome.androidlessons.testtask_skysoft.R;
-import ua.study.awesome.androidlessons.testtask_skysoft.data.response.Bank;
+import ua.study.awesome.androidlessons.testtask_skysoft.data.response.BankResponse;
 import ua.study.awesome.androidlessons.testtask_skysoft.interfaces.ClickListener;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.view_holders.BankViewHolder;
 
@@ -18,13 +18,13 @@ public class BankAdapter extends RecyclerView.Adapter<BankViewHolder> {
 
     private ClickListener clickListener;
 
-    private ArrayList<Bank> banks;
+    private ArrayList<BankResponse> bankResponses;
 
     private Context context;
 
     public BankAdapter(Context context) {
         this.context = context;
-        banks = new ArrayList<>();
+        bankResponses = new ArrayList<>();
     }
 
     @NonNull
@@ -36,18 +36,18 @@ public class BankAdapter extends RecyclerView.Adapter<BankViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull BankViewHolder bankViewHolder, int i) {
-        Bank bank = banks.get(i);
+        BankResponse bankResponse = bankResponses.get(i);
 
-        bankViewHolder.onBindBank(bank);
+        bankViewHolder.onBindBank(bankResponse);
     }
 
     @Override
     public int getItemCount() {
-        return banks.size();
+        return bankResponses.size();
     }
 
-    public void setBanks(ArrayList<Bank> banks) {
-        this.banks = banks;
+    public void setBankResponses(ArrayList<BankResponse> bankResponses) {
+        this.bankResponses = bankResponses;
     }
 
     public void setOnItemClickListener(ClickListener clickListener) {
