@@ -33,7 +33,8 @@ import ua.study.awesome.androidlessons.testtask_skysoft.comparators.DeviceIdComp
 import ua.study.awesome.androidlessons.testtask_skysoft.comparators.DeviceNameComparator;
 import ua.study.awesome.androidlessons.testtask_skysoft.data.entity.Device;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.MainActivity;
-import ua.study.awesome.androidlessons.testtask_skysoft.ui.adapter.SearchableAdapter;
+import ua.study.awesome.androidlessons.testtask_skysoft.ui.adapter.DeviceAdapter;
+import ua.study.awesome.androidlessons.testtask_skysoft.ui.adapter.DeviceFilter;
 
 public class DeviceFragment extends Fragment {
 
@@ -47,7 +48,8 @@ public class DeviceFragment extends Fragment {
 
     private ArrayList<Device> devices = new ArrayList<>();
 
-    SearchableAdapter searchableAdapter;
+    DeviceAdapter adapter;
+    DeviceFilter deviceFilter;
 
     @BindView(R.id.recycler_device)
     RecyclerView recyclerDevice;
@@ -80,10 +82,15 @@ public class DeviceFragment extends Fragment {
     }
 
     private void init() {
-        searchableAdapter = new SearchableAdapter(getContext(), devices);
+//        deviceFilter = new DeviceFilter(devices);
+        adapter = new DeviceAdapter(getContext());
+        adapter.setDevices(devices);
 
         recyclerDevice.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerDevice.setAdapter(searchableAdapter);
+        recyclerDevice.setAdapter(adapter);
+
+        Objects.requireNonNull(((MainActivity) Objects.requireNonNull(getActivity())).
+                getSupportActionBar()).setHomeAsUpIndicator(R.drawable.ic_menu_white);
     }
 
     public void searchDevice(){
@@ -101,41 +108,23 @@ public class DeviceFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                searchableAdapter.getFilter().filter(s.toString(), new Filter.FilterListener() {
+                adapter.getFilter().filter(s.toString(), new Filter.FilterListener() {
                     @Override
                     public void onFilterComplete(int count) {
 
-                        searchableAdapter.setDevices(searchableAdapter.getDevices());
+//                        adapter.setDevices(deviceFilter.getFilterableDevices());
 
-                        if (searchableAdapter.getDevices().isEmpty()){
+                        if (adapter.getDevices().isEmpty()){
                             tvEmpty.setVisibility(View.VISIBLE);
                         }else {
-                            tvEmpty.setVisibility(View.INVISIBLE);
+                            tvEmpty.setVisibility(View.GONE);
                         }
+
                     }
                 });
-//                filter(s.toString());
             }
         });
     }
-
-//    public void filter(String text){
-//        ArrayList<Device> filteredList = new ArrayList<>();
-//
-//        for (Device device: devices){
-//            if(device.getName().toLowerCase().contains(text.toLowerCase())){
-//                filteredList.add(device);
-//            }
-//        }
-//
-//        if (filteredList.isEmpty()){
-//            tvEmpty.setVisibility(View.VISIBLE);
-//        } else {
-//            tvEmpty.setVisibility(View.INVISIBLE);
-//        }
-//
-//        adapter.filterList(filteredList);
-//    }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -164,27 +153,27 @@ public class DeviceFragment extends Fragment {
     }
 
     public void sortById(){
-        searchableAdapter.removeDevices();
+        adapter.removeDevices();
         settingListDevices();
         Collections.sort(devices, new DeviceIdComparator());
-        searchableAdapter.setDevices(devices);
-        recyclerDevice.setAdapter(searchableAdapter);
+        adapter.setDevices(devices);
+        recyclerDevice.setAdapter(adapter);
     }
 
     public void sortByName(){
-        searchableAdapter.removeDevices();
+        adapter.removeDevices();
         settingListDevices();
         Collections.sort(devices, new DeviceNameComparator());
-        searchableAdapter.setDevices(devices);
-        recyclerDevice.setAdapter(searchableAdapter);
+        adapter.setDevices(devices);
+        recyclerDevice.setAdapter(adapter);
     }
 
     public void sortByDescription(){
-        searchableAdapter.removeDevices();
+        adapter.removeDevices();
         settingListDevices();
         Collections.sort(devices, new DeviceDescriptionComparator());
-        searchableAdapter.setDevices(devices);
-        recyclerDevice.setAdapter(searchableAdapter);
+        adapter.setDevices(devices);
+        recyclerDevice.setAdapter(adapter);
     }
 
     public void settingDeviceValue() {

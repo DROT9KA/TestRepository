@@ -14,7 +14,7 @@ public class DeviceViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.tv_id)
     TextView id;
     @BindView(R.id.tv_name)
-    TextView name;
+    public TextView name;
     @BindView(R.id.tv_description)
     TextView description;
 
@@ -28,4 +28,5 @@ public class DeviceViewHolder extends RecyclerView.ViewHolder {
         name.setText("Name: "+ device.getName());
         description.setText("Description: " + device.getDescription());
     }
+
 }

@@ -4,8 +4,9 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/tb_spannable_string"
+        android:id="@+id/tv_spannable_string"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textSize="25dp"/>
 
 </RelativeLayout>
