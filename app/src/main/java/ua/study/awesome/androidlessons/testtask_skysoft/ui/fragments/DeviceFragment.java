@@ -32,6 +32,7 @@ import ua.study.awesome.androidlessons.testtask_skysoft.data.comparators.DeviceD
 import ua.study.awesome.androidlessons.testtask_skysoft.data.comparators.DeviceIdComparator;
 import ua.study.awesome.androidlessons.testtask_skysoft.data.comparators.DeviceNameComparator;
 import ua.study.awesome.androidlessons.testtask_skysoft.data.entity.DeviceEntity;
+import ua.study.awesome.androidlessons.testtask_skysoft.interfaces.ClickListener;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.MainActivity;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.adapter.DeviceAdapter;
 
@@ -44,6 +45,9 @@ public class DeviceFragment extends Fragment {
     private DeviceEntity deviceEntityThree;
     private DeviceEntity deviceEntityFour;
     private DeviceEntity deviceEntityFive;
+    private DeviceEntity deviceEntitySix;
+    private DeviceEntity deviceEntitySeven;
+    private DeviceEntity deviceEntityEight;
 
     private ArrayList<DeviceEntity> deviceEntities = new ArrayList<>();
 
@@ -63,7 +67,6 @@ public class DeviceFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_device, container, false);
-
         Unbinder unbinder = ButterKnife.bind(this, v);
 
         setHasOptionsMenu(true);
@@ -72,6 +75,16 @@ public class DeviceFragment extends Fragment {
 
         settingListDevices();
 
+        adapter = new DeviceAdapter(getContext());
+        adapter.setOnItemClickListener(new ClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                DeviceEntity device = deviceEntities.get(position);
+
+                showDetailFrag(device.getId(), device.getName(), device.getDescription());
+            }
+        });
+
         init();
 
         searchDevice();
@@ -79,9 +92,7 @@ public class DeviceFragment extends Fragment {
         return v;
     }
 
-    private void init() {
-//        deviceFilter = new DeviceFilter(deviceEntities);
-        adapter = new DeviceAdapter(getContext());
+    void init() {
         adapter.setDeviceEntities(deviceEntities);
 
         recyclerDevice.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -89,6 +100,13 @@ public class DeviceFragment extends Fragment {
 
         Objects.requireNonNull(((MainActivity) Objects.requireNonNull(getActivity())).
                 getSupportActionBar()).setHomeAsUpIndicator(R.drawable.ic_menu_white);
+    }
+
+    void showDetailFrag(int id, String name, String description) {
+        Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragm_container, DetailDeviceFragment.newInstance(id, name, description) )
+                .addToBackStack(null)
+                .commit();
     }
 
     public void searchDevice(){
@@ -110,9 +128,7 @@ public class DeviceFragment extends Fragment {
                     @Override
                     public void onFilterComplete(int count) {
 
-//                        adapter.setDeviceEntities(deviceFilter.getFilterableDeviceEntities());
-
-                        if (adapter.getDeviceEntities().isEmpty()){
+                        if (adapter.getDevicesFiltered().isEmpty()){
                             tvEmpty.setVisibility(View.VISIBLE);
                         }else {
                             tvEmpty.setVisibility(View.GONE);
@@ -151,7 +167,7 @@ public class DeviceFragment extends Fragment {
     }
 
     public void sortById(){
-        adapter.removeDevices();
+//        adapter.removeDevices();
         settingListDevices();
         Collections.sort(deviceEntities, new DeviceIdComparator());
         adapter.setDeviceEntities(deviceEntities);
@@ -159,7 +175,7 @@ public class DeviceFragment extends Fragment {
     }
 
     public void sortByName(){
-        adapter.removeDevices();
+//        adapter.removeDevices();
         settingListDevices();
         Collections.sort(deviceEntities, new DeviceNameComparator());
         adapter.setDeviceEntities(deviceEntities);
@@ -167,7 +183,7 @@ public class DeviceFragment extends Fragment {
     }
 
     public void sortByDescription(){
-        adapter.removeDevices();
+//        adapter.removeDevices();
         settingListDevices();
         Collections.sort(deviceEntities, new DeviceDescriptionComparator());
         adapter.setDeviceEntities(deviceEntities);
@@ -180,33 +196,45 @@ public class DeviceFragment extends Fragment {
         deviceEntityThree = new DeviceEntity(33333333, "IPhone", getResources().getString(R.string.iphone_description));
         deviceEntityFour = new DeviceEntity(44444444, "Huawei", getResources().getString(R.string.huawei_description));
         deviceEntityFive = new DeviceEntity(55555555, "Nokia", getResources().getString(R.string.nokia_description));
+        deviceEntitySix = new DeviceEntity(66666666, "Motorolla", getResources().getString(R.string.motorolla_description));
+        deviceEntitySeven = new DeviceEntity(77777777, "Dendi", getResources().getString(R.string.dendi_description));
+        deviceEntityEight = new DeviceEntity(88888888, "PlayStation", getResources().getString(R.string.play_station_description));
     }
 
-    int number = 1000;
+//    int number = 1000;
+
     public void settingListDevices() {
-        Random randomaizer = new Random();
-
-        for (int i = 0; i < number; i++) {
-
-            int random = randomaizer.nextInt(6);
-
-            switch (random) {
-                case 1:
-                    deviceEntities.add(deviceEntityOne);
-                    break;
-                case 2:
-                    deviceEntities.add(deviceEntityTwo);
-                    break;
-                case 3:
-                    deviceEntities.add(deviceEntityThree);
-                    break;
-                case 4:
-                    deviceEntities.add(deviceEntityFour);
-                    break;
-                case 5:
-                    deviceEntities.add(deviceEntityFive);
-                    break;
-            }
-        }
+        deviceEntities.add(deviceEntityOne);
+        deviceEntities.add(deviceEntityTwo);
+        deviceEntities.add(deviceEntityThree);
+        deviceEntities.add(deviceEntityFour);
+        deviceEntities.add(deviceEntityFive);
+        deviceEntities.add(deviceEntitySix);
+        deviceEntities.add(deviceEntitySeven);
+        deviceEntities.add(deviceEntityEight);
+//        Random randomaizer = new Random();
+//
+//        for (int i = 0; i < number; i++) {
+//
+//            int random = randomaizer.nextInt(6);
+//
+//            switch (random) {
+//                case 1:
+//                    deviceEntities.add(deviceEntityOne);
+//                    break;
+//                case 2:
+//                    deviceEntities.add(deviceEntityTwo);
+//                    break;
+//                case 3:
+//                    deviceEntities.add(deviceEntityThree);
+//                    break;
+//                case 4:
+//                    deviceEntities.add(deviceEntityFour);
+//                    break;
+//                case 5:
+//                    deviceEntities.add(deviceEntityFive);
+//                    break;
+//            }
+//        }
     }
 }

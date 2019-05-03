@@ -14,12 +14,16 @@ public class BankViewHolder extends RecyclerView.ViewHolder implements View.OnCl
 
     @BindView(R.id.tv_longtitude)
     TextView longitude;
+
     @BindView(R.id.tv_latitude)
     TextView latitude;
+
     @BindView(R.id.tv_place_ua)
     TextView placeUa;
+
     @BindView(R.id.tv_type)
     TextView type;
+
     @BindView(R.id.tv_address)
     TextView fullAddressUa;
 
@@ -42,7 +46,7 @@ public class BankViewHolder extends RecyclerView.ViewHolder implements View.OnCl
 
     @Override
     public void onClick(View v) {
-        clickListener.onItemClick(getAdapterPosition(), v);
+        clickListener.onItemClick(getAdapterPosition());
     }
 
 }

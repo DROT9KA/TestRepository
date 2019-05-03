@@ -47,9 +47,11 @@ public class BankFragment extends Fragment {
     @BindView(R.id.progress_bar)
     ProgressBar progressBar;
 
+    private static final String ARG_TITLE = "TITLE";
+
     public static BankFragment newInstance(String title) {
         Bundle bundle = new Bundle();
-        bundle.putString("TITLE", title);
+        bundle.putString(ARG_TITLE, title);
 
         BankFragment bankFragment = new BankFragment();
         bankFragment.setArguments(bundle);
@@ -57,9 +59,11 @@ public class BankFragment extends Fragment {
         return bankFragment;
     }
 
-    private void readBundle(Bundle bundle) {
-        if (bundle != null) {
-            title = bundle.getString("TITLE");
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            title = getArguments().getString(ARG_TITLE);
         }
     }
 
@@ -78,7 +82,7 @@ public class BankFragment extends Fragment {
         adapter = new BankAdapter(getContext());
         adapter.setOnItemClickListener(new ClickListener() {
             @Override
-            public void onItemClick(int position, View v) {
+            public void onItemClick(int position) {
                 showDetailFrag(position);
             }
         });
@@ -112,8 +116,6 @@ public class BankFragment extends Fragment {
         presenter.attachView(this);
 
         recyclerBanks.setLayoutManager(new LinearLayoutManager(getContext()));
-
-        readBundle(getArguments());
 
         Objects.requireNonNull(((MainActivity) Objects.requireNonNull(getActivity())).
                 getSupportActionBar()).setDisplayHomeAsUpEnabled(true);

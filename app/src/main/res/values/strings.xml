@@ -36,6 +36,13 @@
         telecommunications, information technology, and consumer electronics company,
         founded in 1865. Nokia.s headquarters are in Espoo, in the greater Helsinki
         metropolitan area.</string>
+
+    <string name="dendi_description">I LOVE DENDI ^_^</string>
+
+    <string name="motorolla_description">I LOVE MOTOROLLA ^_^</string>
+
+    <string name="play_station_description">I LOVE PLAY_STATION ^_^</string>
+
     <string name="search">Search</string>
     <string name="spannable">Spannable</string>
 

@@ -51,10 +51,13 @@ public class DetailBankFragment extends Fragment {
         return detailBankFragment;
     }
 
-    private void readBundle(Bundle bundle) {
-        if (bundle != null) {
-            number = bundle.getInt("Number");
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            number = getArguments().getInt("Number");
         }
+
     }
 
     @Nullable
@@ -86,8 +89,6 @@ public class DetailBankFragment extends Fragment {
     void init() {
         presenter = new DetailBankPresenter();
         presenter.attachView(this);
-
-        readBundle(getArguments());
 
         Objects.requireNonNull(((MainActivity) Objects.requireNonNull(getActivity())).
                 getSupportActionBar()).setTitle("Detail Info");
