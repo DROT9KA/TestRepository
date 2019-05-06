@@ -6,11 +6,12 @@ import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import ua.study.awesome.androidlessons.testtask_skysoft.R;
 import ua.study.awesome.androidlessons.testtask_skysoft.data.response.BankResponse;
 import ua.study.awesome.androidlessons.testtask_skysoft.interfaces.ClickListener;
 
-public class BankViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class BankViewHolder extends RecyclerView.ViewHolder{
 
     @BindView(R.id.tv_longtitude)
     TextView longitude;
@@ -33,7 +34,6 @@ public class BankViewHolder extends RecyclerView.ViewHolder implements View.OnCl
         super(itemView);
         ButterKnife.bind(this, itemView);
         this.clickListener = clickListener;
-        itemView.setOnClickListener(this);
     }
 
     public void onBindBank(BankResponse bankResponse){
@@ -44,8 +44,8 @@ public class BankViewHolder extends RecyclerView.ViewHolder implements View.OnCl
         fullAddressUa.setText(bankResponse.getFullAddressUa());
     }
 
-    @Override
-    public void onClick(View v) {
+    @OnClick(R.id.bank_item)
+    void onBankClick() {
         clickListener.onItemClick(getAdapterPosition());
     }
 

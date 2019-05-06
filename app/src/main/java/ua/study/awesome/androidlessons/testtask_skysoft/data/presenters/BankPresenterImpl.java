@@ -11,19 +11,19 @@ import ua.study.awesome.androidlessons.testtask_skysoft.data.entity.ModelEntity;
 import ua.study.awesome.androidlessons.testtask_skysoft.data.entity.RealmBankModelEntity;
 import ua.study.awesome.androidlessons.testtask_skysoft.data.response.BankResponse;
 import ua.study.awesome.androidlessons.testtask_skysoft.data.response.BankListResponse;
-import ua.study.awesome.androidlessons.testtask_skysoft.interfaces.PresenterInterface;
+import ua.study.awesome.androidlessons.testtask_skysoft.interfaces.BankPresenter;
 import ua.study.awesome.androidlessons.testtask_skysoft.interfaces.PrivatBankAPI;
 import ua.study.awesome.androidlessons.testtask_skysoft.retrofit.MainRetrofit;
-import ua.study.awesome.androidlessons.testtask_skysoft.ui.fragments.BankFragment;
+import ua.study.awesome.androidlessons.testtask_skysoft.ui.fragments.BankImpl;
 
-public class BankPresenter implements PresenterInterface {
+public class BankPresenterImpl implements BankPresenter {
 
-    private BankFragment view;
+    private BankImpl view;
     private ModelEntity modelEntity = new ModelEntity();
 
     @Override
-    public void attachView(BankFragment bankFragment){
-        view = bankFragment;
+    public void attachView(BankImpl bankFragmentImpl){
+        view = bankFragmentImpl;
     }
 
     @Override

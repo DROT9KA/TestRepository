@@ -3,11 +3,8 @@ package ua.study.awesome.androidlessons.testtask_skysoft.ui.fragments;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.Objects;
@@ -18,10 +15,14 @@ import butterknife.Unbinder;
 import ua.study.awesome.androidlessons.testtask_skysoft.R;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.MainActivity;
 
-public class DetailDeviceFragment extends Fragment {
+public class DetailDeviceFragment extends BaseFragment {
+
+    public static final String FRAGMENT_TAG = DetailDeviceFragment.class.getSimpleName();
 
     @BindView(R.id.detail_device_info)
     TextView tvDetailInfo;
+
+
 
     private static final String ARG_ID = "ID";
     private static final String ARG_NAME = "NAME";
@@ -54,18 +55,22 @@ public class DetailDeviceFragment extends Fragment {
         }
     }
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.detail_device_fragment, container, false);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
         setHasOptionsMenu(true);
-        Unbinder unbind = ButterKnife.bind(this, v);
+
+        Unbinder unbind = ButterKnife.bind(this, view);
 
         init();
         showDeviceDetails();
 
-        return v;
+    }
+
+    @Override
+    public int provideView() {
+        return R.layout.detail_device_fragment;
     }
 
     @Override

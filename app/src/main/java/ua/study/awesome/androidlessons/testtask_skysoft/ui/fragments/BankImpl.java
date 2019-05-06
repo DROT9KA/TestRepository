@@ -25,14 +25,17 @@ import io.realm.RealmResults;
 import ua.study.awesome.androidlessons.testtask_skysoft.R;
 import ua.study.awesome.androidlessons.testtask_skysoft.data.entity.RealmBankModelEntity;
 import ua.study.awesome.androidlessons.testtask_skysoft.data.response.BankListResponse;
+import ua.study.awesome.androidlessons.testtask_skysoft.interfaces.BankView;
 import ua.study.awesome.androidlessons.testtask_skysoft.interfaces.ClickListener;
-import ua.study.awesome.androidlessons.testtask_skysoft.data.presenters.BankPresenter;
+import ua.study.awesome.androidlessons.testtask_skysoft.data.presenters.BankPresenterImpl;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.MainActivity;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.adapter.BankAdapter;
 
-public class BankFragment extends Fragment {
+public class BankImpl extends BaseFragment implements BankView {
 
-    private BankPresenter presenter;
+    public static final String FRAGMENT_TAG = BankImpl.class.getSimpleName();
+
+    private BankPresenterImpl presenter;
 
     private String title;
 
@@ -49,14 +52,14 @@ public class BankFragment extends Fragment {
 
     private static final String ARG_TITLE = "TITLE";
 
-    public static BankFragment newInstance(String title) {
+    public static BankImpl newInstance(String title) {
         Bundle bundle = new Bundle();
         bundle.putString(ARG_TITLE, title);
 
-        BankFragment bankFragment = new BankFragment();
-        bankFragment.setArguments(bundle);
+        BankImpl bankFragmentImpl = new BankImpl();
+        bankFragmentImpl.setArguments(bundle);
 
-        return bankFragment;
+        return bankFragmentImpl;
     }
 
     @Override
@@ -67,12 +70,11 @@ public class BankFragment extends Fragment {
         }
     }
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_bank, container, false);
-        Unbinder unbinder = ButterKnife.bind(this, v);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        Unbinder unbinder = ButterKnife.bind(this, view);
 
         setHasOptionsMenu(true);
 
@@ -90,15 +92,18 @@ public class BankFragment extends Fragment {
         init();
         presenter.loadBank();
 
-        return v;
+    }
+
+    @Override
+    public int provideView() {
+        return R.layout.fragment_bank;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                ((MainActivity) Objects.requireNonNull(getActivity())).drawerLayout.openDrawer(GravityCompat.START);
-                return true;
+        if (item.getItemId() == android.R.id.home) {
+            ((MainActivity) Objects.requireNonNull(getActivity())).drawerLayout.openDrawer(GravityCompat.START);
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
@@ -112,7 +117,7 @@ public class BankFragment extends Fragment {
             }
         });
 
-        presenter = new BankPresenter();
+        presenter = new BankPresenterImpl();
         presenter.attachView(this);
 
         recyclerBanks.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -122,12 +127,12 @@ public class BankFragment extends Fragment {
 
         Objects.requireNonNull(((MainActivity) Objects.requireNonNull(getActivity())).
                 getSupportActionBar()).setHomeAsUpIndicator(R.drawable.ic_menu_white);
-        //    R.drawable.point_vert_white_24dp
 
         Objects.requireNonNull(((MainActivity) Objects.requireNonNull(getActivity())).
                 getSupportActionBar()).setTitle(String.format("%s", title));
     }
 
+    @Override
     public void onBanksLoaded(BankListResponse bankListResponse) {
         adapter.setBankResponses(bankListResponse.getBankResponseList());
         recyclerBanks.setAdapter(adapter);
@@ -141,17 +146,18 @@ public class BankFragment extends Fragment {
         /*random background colors*/
     }
 
-    void showDetailFrag(int number) {
-        Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragm_container, DetailBankFragment.newInstance(number))
-                .addToBackStack(null)
-                .commit();
+    @Override
+    public void showDetailFrag(int number) {
+        ((MainActivity) Objects.requireNonNull(getActivity())).replaceFragment(DetailBankFragment
+                .newInstance(number), DetailBankFragment.FRAGMENT_TAG);
     }
 
+    @Override
     public void hideProgress() {
         progressBar.setVisibility(View.INVISIBLE);
     }
 
+    @Override
     public void showToast() {
         Toast.makeText(getContext(), "Loading error", Toast.LENGTH_LONG).show();
     }

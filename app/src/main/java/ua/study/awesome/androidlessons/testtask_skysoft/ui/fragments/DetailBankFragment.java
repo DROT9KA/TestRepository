@@ -3,12 +3,9 @@ package ua.study.awesome.androidlessons.testtask_skysoft.ui.fragments;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -23,12 +20,11 @@ import io.realm.Realm;
 import io.realm.RealmResults;
 import ua.study.awesome.androidlessons.testtask_skysoft.R;
 import ua.study.awesome.androidlessons.testtask_skysoft.data.entity.RealmBankModelEntity;
-import ua.study.awesome.androidlessons.testtask_skysoft.data.presenters.DetailBankPresenter;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.MainActivity;
 
-public class DetailBankFragment extends Fragment {
+public class DetailBankFragment extends BaseFragment {
 
-    private DetailBankPresenter presenter;
+    public static final String FRAGMENT_TAG = DetailBankFragment.class.getSimpleName();
 
     private int number;
 
@@ -60,19 +56,21 @@ public class DetailBankFragment extends Fragment {
 
     }
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.detail_bank_fragment, container, false);
-        Unbinder unbinder = ButterKnife.bind(this, v);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Unbinder unbinder = ButterKnife.bind(this, view);
 
         setHasOptionsMenu(true);
 
         init();
         showDetails();
 
-        return v;
+    }
+
+    @Override
+    public int provideView() {
+        return R.layout.detail_bank_fragment;
     }
 
     @Override
@@ -87,8 +85,6 @@ public class DetailBankFragment extends Fragment {
     }
 
     void init() {
-        presenter = new DetailBankPresenter();
-        presenter.attachView(this);
 
         Objects.requireNonNull(((MainActivity) Objects.requireNonNull(getActivity())).
                 getSupportActionBar()).setTitle("Detail Info");

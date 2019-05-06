@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import ua.study.awesome.androidlessons.testtask_skysoft.R;
 import ua.study.awesome.androidlessons.testtask_skysoft.data.response.BankResponse;
@@ -18,7 +19,7 @@ public class BankAdapter extends RecyclerView.Adapter<BankViewHolder> {
 
     private ClickListener clickListener;
 
-    private ArrayList<BankResponse> bankResponses;
+    private List<BankResponse> bankResponses;
 
     private Context context;
 

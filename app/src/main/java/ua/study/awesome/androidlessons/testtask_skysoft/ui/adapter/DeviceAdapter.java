@@ -1,36 +1,33 @@
 package ua.study.awesome.androidlessons.testtask_skysoft.ui.adapter;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
-import android.widget.TextView;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import ua.study.awesome.androidlessons.testtask_skysoft.R;
 import ua.study.awesome.androidlessons.testtask_skysoft.data.entity.DeviceEntity;
 import ua.study.awesome.androidlessons.testtask_skysoft.interfaces.ClickListener;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.view_holders.DeviceViewHolder;
+import ua.study.awesome.androidlessons.testtask_skysoft.utils.SpannableUtils;
 
 public class DeviceAdapter extends RecyclerView.Adapter<DeviceViewHolder> implements Filterable {
 
-    private String charString ="";
-
-    private ArrayList<DeviceEntity> devices;
-    private ArrayList<DeviceEntity> devicesFiltered;
+    private List<DeviceEntity> devices;
+    private List<DeviceEntity> devicesFiltered;
 
     private ClickListener clickListener;
 
-    public ArrayList<DeviceEntity> getDevicesFiltered() {
+    private SecondDeviceFilter filter = new SecondDeviceFilter(this);
+
+    public List<DeviceEntity> getDevicesFiltered() {
         return devicesFiltered;
     }
 
@@ -50,17 +47,9 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceViewHolder> implem
     @Override
     public void onBindViewHolder(@NonNull DeviceViewHolder deviceViewHolder, int i) {
         DeviceEntity device = devicesFiltered.get(i);
-
-        SpannableString spannableString = new SpannableString(device.getName());
-
-        int start = device.getName().toLowerCase().indexOf(charString);
-        int end = start + charString.length();
-
-        spannableString.setSpan(new ForegroundColorSpan(Color.BLUE), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-
         deviceViewHolder.onBindDevice(device);
-
-        deviceViewHolder.name.setText(spannableString);
+        SpannableString span = SpannableUtils.createSpan(device.getName(), filter.getCharString());
+        deviceViewHolder.name.setText(span);
     }
 
     @Override
@@ -72,47 +61,57 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceViewHolder> implem
         this.clickListener = clickListener;
     }
 
-    public ArrayList<DeviceEntity> getDevices() {
+    public List<DeviceEntity> getDevices() {
         return devices;
     }
 
-    public void setDeviceEntities(ArrayList<DeviceEntity> devices) {
+    public void setDeviceEntities(List<DeviceEntity> devices) {
         this.devices = devices;
         this.devicesFiltered = devices;
         notifyDataSetChanged();
     }
 
+    public void setDevicesFiltered(List<DeviceEntity> devicesFiltered) {
+        this.devicesFiltered = devicesFiltered;
+        notifyDataSetChanged();
+    }
+
     @Override
     public Filter getFilter() {
-        return new Filter() {
-            @Override
-            protected FilterResults performFiltering(CharSequence constraint) {
-                charString = constraint.toString();
-
-                if(charString.isEmpty()){
-                    devicesFiltered = devices;
-                } else {
-
-                    ArrayList<DeviceEntity> filterList = new ArrayList<>();
-
-                    for (DeviceEntity device: devices){
-                        if(device.getName().toLowerCase().contains(charString.toLowerCase())){
-                            filterList.add(device);
-                        }
-                    }
-                    devicesFiltered = filterList;
-                }
-
-                FilterResults filterResults = new FilterResults();
-                filterResults.values = devicesFiltered;
-
-                return filterResults;
-            }
-
-            @Override
-            protected void publishResults(CharSequence constraint, FilterResults results) {
-                notifyDataSetChanged();
-            }
-        };
+        return this.filter;
     }
+
+//    @Override
+//    public Filter getFilter() {
+//        return new Filter() {
+//            @Override
+//            protected FilterResults performFiltering(CharSequence constraint) {
+//                charString = constraint.toString();
+//
+//                if(charString.isEmpty()){
+//                    devicesFiltered = devices;
+//                } else {
+//
+//                    ArrayList<DeviceEntity> filterList = new ArrayList<>();
+//
+//                    for (DeviceEntity device: devices){
+//                        if(device.getName().toLowerCase().contains(charString.toLowerCase())){
+//                            filterList.add(device);
+//                        }
+//                    }
+//                    devicesFiltered = filterList;
+//                }
+//
+//                FilterResults filterResults = new FilterResults();
+//                filterResults.values = devicesFiltered;
+//
+//                return filterResults;
+//            }
+//
+//            @Override
+//            protected void publishResults(CharSequence constraint, FilterResults results) {
+//                notifyDataSetChanged();
+//            }
+//        };
+//    }
 }

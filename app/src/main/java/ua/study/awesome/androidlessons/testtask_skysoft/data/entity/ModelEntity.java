@@ -57,12 +57,11 @@ public class ModelEntity implements ModelInterface {
 //        return realmBankListModel;
 //    }
 
-    @Override
-    public void addBrowse(List<RealmBankModelEntity> realmBanks) {
-        Realm mRealm = Realm.getDefaultInstance();
-        mRealm.beginTransaction();
-        mRealm.insertOrUpdate(realmBanks);
-        mRealm.commitTransaction();
-        mRealm.close();
-    }
+//    public void addBrowse(List<RealmBankModelEntity> realmBanks) {
+//        Realm mRealm = Realm.getDefaultInstance();
+//        mRealm.beginTransaction();
+//        mRealm.insertOrUpdate(realmBanks);
+//        mRealm.commitTransaction();
+//        mRealm.close();
+//    }
 }

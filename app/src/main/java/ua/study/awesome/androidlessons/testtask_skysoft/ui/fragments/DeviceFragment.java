@@ -21,6 +21,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
@@ -36,7 +37,9 @@ import ua.study.awesome.androidlessons.testtask_skysoft.interfaces.ClickListener
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.MainActivity;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.adapter.DeviceAdapter;
 
-public class DeviceFragment extends Fragment {
+public class DeviceFragment extends BaseFragment {
+
+    public static final String FRAGMENT_TEG = DeviceFragment.class.getSimpleName();
 
     private static final String TAG = "myLogs";
 
@@ -49,7 +52,7 @@ public class DeviceFragment extends Fragment {
     private DeviceEntity deviceEntitySeven;
     private DeviceEntity deviceEntityEight;
 
-    private ArrayList<DeviceEntity> deviceEntities = new ArrayList<>();
+    private List<DeviceEntity> deviceEntities = null;
 
     DeviceAdapter adapter;
 
@@ -69,17 +72,11 @@ public class DeviceFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_device, container, false);
         Unbinder unbinder = ButterKnife.bind(this, v);
 
-        setHasOptionsMenu(true);
-
-        settingDeviceValue();
-
-        settingListDevices();
-
         adapter = new DeviceAdapter(getContext());
         adapter.setOnItemClickListener(new ClickListener() {
             @Override
             public void onItemClick(int position) {
-                DeviceEntity device = deviceEntities.get(position);
+                DeviceEntity device = adapter.getDevicesFiltered().get(position);
 
                 showDetailFrag(device.getId(), device.getName(), device.getDescription());
             }
@@ -92,6 +89,39 @@ public class DeviceFragment extends Fragment {
         return v;
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        Unbinder unbinder = ButterKnife.bind(this, view);
+
+        setHasOptionsMenu(true);
+
+        settingDeviceValue();
+
+        settingListDevices();
+
+        adapter = new DeviceAdapter(getContext());
+        adapter.setOnItemClickListener(new ClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                DeviceEntity device = adapter.getDevicesFiltered().get(position);
+
+                showDetailFrag(device.getId(), device.getName(), device.getDescription());
+            }
+        });
+
+        init();
+
+        searchDevice();
+
+    }
+
+    @Override
+    public int provideView() {
+        return R.layout.fragment_device;
+    }
+
     void init() {
         adapter.setDeviceEntities(deviceEntities);
 
@@ -100,13 +130,14 @@ public class DeviceFragment extends Fragment {
 
         Objects.requireNonNull(((MainActivity) Objects.requireNonNull(getActivity())).
                 getSupportActionBar()).setHomeAsUpIndicator(R.drawable.ic_menu_white);
+
+        Objects.requireNonNull(((MainActivity) Objects.requireNonNull(getActivity())).
+                getSupportActionBar()).setTitle("Device Search");
     }
 
     void showDetailFrag(int id, String name, String description) {
-        Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragm_container, DetailDeviceFragment.newInstance(id, name, description) )
-                .addToBackStack(null)
-                .commit();
+        ((MainActivity) Objects.requireNonNull(getActivity())).replaceFragment(DetailDeviceFragment
+                .newInstance(id, name, description),DetailBankFragment.FRAGMENT_TAG);
     }
 
     public void searchDevice(){
@@ -191,6 +222,7 @@ public class DeviceFragment extends Fragment {
     }
 
     public void settingDeviceValue() {
+        deviceEntities = new ArrayList<>();
         deviceEntityOne = new DeviceEntity(11111111, "Xiaomi", getString(R.string.xiaomi_description));
         deviceEntityTwo = new DeviceEntity(22222222, "Samsung", getResources().getString(R.string.samsung_description));
         deviceEntityThree = new DeviceEntity(33333333, "IPhone", getResources().getString(R.string.iphone_description));

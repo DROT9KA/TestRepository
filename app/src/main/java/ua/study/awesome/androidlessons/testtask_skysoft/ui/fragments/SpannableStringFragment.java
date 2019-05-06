@@ -36,21 +36,22 @@ import ua.study.awesome.androidlessons.testtask_skysoft.R;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.MainActivity;
 import ua.study.awesome.androidlessons.testtask_skysoft.utils.AppConstans;
 
-public class SpannableStringFragment extends Fragment {
+public class SpannableStringFragment extends BaseFragment {
+
+    public static final String FRAGMENT_TAG = SpannableStringFragment.class.getSimpleName();
 
     @BindView(R.id.tv_spannable_string)
     TextView textView;
 
-    SpannableString s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12;
+    private SpannableString s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12;
 
     SpannableStringBuilder builder;
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_spannable_string, container, false);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-        Unbinder unbinder = ButterKnife.bind(this, v);
+        Unbinder unbinder = ButterKnife.bind(this, view);
 
         init();
 
@@ -63,7 +64,11 @@ public class SpannableStringFragment extends Fragment {
         textView.setText(builder);
         textView.setMovementMethod(LinkMovementMethod.getInstance());
 
-        return v;
+    }
+
+    @Override
+    public int provideView() {
+        return R.layout.fragment_spannable_string;
     }
 
     public void init() {
