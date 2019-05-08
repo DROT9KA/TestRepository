@@ -1,8 +1,11 @@
 package ua.study.awesome.androidlessons.testtask_skysoft.ui;
 
+import android.Manifest;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
@@ -14,6 +17,7 @@ import ua.study.awesome.androidlessons.testtask_skysoft.R;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.fragments.BankImpl;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.fragments.DetailDeviceFragment;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.fragments.DeviceFragment;
+import ua.study.awesome.androidlessons.testtask_skysoft.ui.fragments.ImageFragment;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.fragments.SpannableStringFragment;
 
 public class MainActivity extends BaseActivity {
@@ -31,6 +35,8 @@ public class MainActivity extends BaseActivity {
         ButterKnife.bind(this);
 
         navigationItemListen();
+
+//        ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.INTERNET}, );
 
         addFragment(BankImpl.newInstance("Privat ATM"));
     }
@@ -60,6 +66,9 @@ public class MainActivity extends BaseActivity {
                                     break;
                                 case R.id.nav_spannable:
                                     replaceFragment(new SpannableStringFragment(), SpannableStringFragment.FRAGMENT_TAG);
+                                    break;
+                                case R.id.nav_image:
+                                    replaceFragment(new ImageFragment(), ImageFragment.FRAGMENT_TAG);
                                     break;
                                 case R.id.nav_logout:
                                     finish();
