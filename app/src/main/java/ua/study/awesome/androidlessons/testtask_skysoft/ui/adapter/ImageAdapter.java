@@ -19,7 +19,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageViewHolder> {
 
     private List<String> images;
 
-    Context context;
+    private Context context;
 
     public ImageAdapter(Context context) {
         this.context = context;
@@ -41,7 +41,6 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageViewHolder> {
         } else {
             Toast.makeText(context, "Images Empty", Toast.LENGTH_SHORT).show();
         }
-
     }
 
     @Override

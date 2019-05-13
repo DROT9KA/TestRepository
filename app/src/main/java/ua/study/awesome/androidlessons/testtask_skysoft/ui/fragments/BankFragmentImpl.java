@@ -3,15 +3,12 @@ package ua.study.awesome.androidlessons.testtask_skysoft.ui.fragments;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -31,9 +28,9 @@ import ua.study.awesome.androidlessons.testtask_skysoft.data.presenters.BankPres
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.MainActivity;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.adapter.BankAdapter;
 
-public class BankImpl extends BaseFragment implements BankView {
+public class BankFragmentImpl extends BaseFragment implements BankView {
 
-    public static final String FRAGMENT_TAG = BankImpl.class.getSimpleName();
+    public static final String FRAGMENT_TAG = BankFragmentImpl.class.getSimpleName();
 
     private BankPresenterImpl presenter;
 
@@ -52,11 +49,11 @@ public class BankImpl extends BaseFragment implements BankView {
 
     private static final String ARG_TITLE = "TITLE";
 
-    public static BankImpl newInstance(String title) {
+    public static BankFragmentImpl newInstance(String title) {
         Bundle bundle = new Bundle();
         bundle.putString(ARG_TITLE, title);
 
-        BankImpl bankFragmentImpl = new BankImpl();
+        BankFragmentImpl bankFragmentImpl = new BankFragmentImpl();
         bankFragmentImpl.setArguments(bundle);
 
         return bankFragmentImpl;
@@ -73,8 +70,6 @@ public class BankImpl extends BaseFragment implements BankView {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        Unbinder unbinder = ButterKnife.bind(this, view);
 
         setHasOptionsMenu(true);
 
@@ -100,6 +95,11 @@ public class BankImpl extends BaseFragment implements BankView {
     }
 
     @Override
+    public Object butterKnifeBind() {
+        return this;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             ((MainActivity) Objects.requireNonNull(getActivity())).drawerLayout.openDrawer(GravityCompat.START);
@@ -110,15 +110,15 @@ public class BankImpl extends BaseFragment implements BankView {
     }
 
     public void init() {
+        presenter = new BankPresenterImpl();
+        presenter.attachView(this);
+
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 presenter.loadBank();
             }
         });
-
-        presenter = new BankPresenterImpl();
-        presenter.attachView(this);
 
         recyclerBanks.setLayoutManager(new LinearLayoutManager(getContext()));
 

@@ -46,5 +46,7 @@
     <string name="search">Search</string>
     <string name="spannable">Spannable</string>
     <string name="images">Images</string>
+    <string name="my_photo">Photo</string>
+    <string name="my_video">Video</string>
 
 </resources>

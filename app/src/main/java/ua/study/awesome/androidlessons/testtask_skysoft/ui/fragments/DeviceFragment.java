@@ -93,8 +93,6 @@ public class DeviceFragment extends BaseFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Unbinder unbinder = ButterKnife.bind(this, view);
-
         setHasOptionsMenu(true);
 
         settingDeviceValue();
@@ -120,6 +118,11 @@ public class DeviceFragment extends BaseFragment {
     @Override
     public int provideView() {
         return R.layout.fragment_device;
+    }
+
+    @Override
+    public Object butterKnifeBind() {
+        return this;
     }
 
     void init() {

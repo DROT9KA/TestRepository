@@ -59,7 +59,6 @@ public class DetailBankFragment extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Unbinder unbinder = ButterKnife.bind(this, view);
 
         setHasOptionsMenu(true);
 
@@ -71,6 +70,11 @@ public class DetailBankFragment extends BaseFragment {
     @Override
     public int provideView() {
         return R.layout.detail_bank_fragment;
+    }
+
+    @Override
+    public Object butterKnifeBind() {
+        return this;
     }
 
     @Override

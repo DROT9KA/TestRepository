@@ -51,8 +51,6 @@ public class SpannableStringFragment extends BaseFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Unbinder unbinder = ButterKnife.bind(this, view);
-
         init();
 
         setHasOptionsMenu(true);
@@ -69,6 +67,11 @@ public class SpannableStringFragment extends BaseFragment {
     @Override
     public int provideView() {
         return R.layout.fragment_spannable_string;
+    }
+
+    @Override
+    public Object butterKnifeBind() {
+        return this;
     }
 
     public void init() {

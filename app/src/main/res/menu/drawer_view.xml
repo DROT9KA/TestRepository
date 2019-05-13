@@ -20,6 +20,10 @@
             android:id="@+id/nav_image"
             android:title="@string/images" />
 
+        <item
+            android:id="@+id/nav_photo"
+            android:title="@string/my_photo" />
+
     </group>
 
     <group

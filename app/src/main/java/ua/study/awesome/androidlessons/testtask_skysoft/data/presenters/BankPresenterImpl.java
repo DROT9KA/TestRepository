@@ -14,15 +14,15 @@ import ua.study.awesome.androidlessons.testtask_skysoft.data.response.BankListRe
 import ua.study.awesome.androidlessons.testtask_skysoft.interfaces.BankPresenter;
 import ua.study.awesome.androidlessons.testtask_skysoft.interfaces.PrivatBankAPI;
 import ua.study.awesome.androidlessons.testtask_skysoft.retrofit.MainRetrofit;
-import ua.study.awesome.androidlessons.testtask_skysoft.ui.fragments.BankImpl;
+import ua.study.awesome.androidlessons.testtask_skysoft.ui.fragments.BankFragmentImpl;
 
 public class BankPresenterImpl implements BankPresenter {
 
-    private BankImpl view;
+    private BankFragmentImpl view;
     private ModelEntity modelEntity = new ModelEntity();
 
     @Override
-    public void attachView(BankImpl bankFragmentImpl){
+    public void attachView(BankFragmentImpl bankFragmentImpl){
         view = bankFragmentImpl;
     }
 

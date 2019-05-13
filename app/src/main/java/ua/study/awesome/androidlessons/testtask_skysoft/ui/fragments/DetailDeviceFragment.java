@@ -61,8 +61,6 @@ public class DetailDeviceFragment extends BaseFragment {
 
         setHasOptionsMenu(true);
 
-        Unbinder unbind = ButterKnife.bind(this, view);
-
         init();
         showDeviceDetails();
 
@@ -71,6 +69,11 @@ public class DetailDeviceFragment extends BaseFragment {
     @Override
     public int provideView() {
         return R.layout.detail_device_fragment;
+    }
+
+    @Override
+    public Object butterKnifeBind() {
+        return this;
     }
 
     @Override

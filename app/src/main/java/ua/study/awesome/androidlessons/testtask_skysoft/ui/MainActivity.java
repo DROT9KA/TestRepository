@@ -1,23 +1,18 @@
 package ua.study.awesome.androidlessons.testtask_skysoft.ui;
 
-import android.Manifest;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.view.MenuItem;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ua.study.awesome.androidlessons.testtask_skysoft.R;
-import ua.study.awesome.androidlessons.testtask_skysoft.ui.fragments.BankImpl;
-import ua.study.awesome.androidlessons.testtask_skysoft.ui.fragments.DetailDeviceFragment;
+import ua.study.awesome.androidlessons.testtask_skysoft.ui.fragments.BankFragmentImpl;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.fragments.DeviceFragment;
-import ua.study.awesome.androidlessons.testtask_skysoft.ui.fragments.ImageFragment;
+import ua.study.awesome.androidlessons.testtask_skysoft.ui.fragments.ImageFragmentImpl;
+import ua.study.awesome.androidlessons.testtask_skysoft.ui.fragments.PhotoFragment;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.fragments.SpannableStringFragment;
 
 public class MainActivity extends BaseActivity {
@@ -38,7 +33,7 @@ public class MainActivity extends BaseActivity {
 
 //        ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.INTERNET}, );
 
-        addFragment(BankImpl.newInstance("Privat ATM"));
+        addFragment(BankFragmentImpl.newInstance("Privat ATM"));
     }
 
     @Override
@@ -59,7 +54,7 @@ public class MainActivity extends BaseActivity {
 
                             switch (menuItem.getItemId()) {
                                 case R.id.nav_bank:
-                                    replaceFragment(BankImpl.newInstance("Privat ATM"), BankImpl.FRAGMENT_TAG);
+                                    replaceFragment(BankFragmentImpl.newInstance("Privat ATM"), BankFragmentImpl.FRAGMENT_TAG);
                                     break;
                                 case R.id.nav_device:
                                     replaceFragment(new DeviceFragment(), DeviceFragment.FRAGMENT_TEG);
@@ -68,7 +63,10 @@ public class MainActivity extends BaseActivity {
                                     replaceFragment(new SpannableStringFragment(), SpannableStringFragment.FRAGMENT_TAG);
                                     break;
                                 case R.id.nav_image:
-                                    replaceFragment(new ImageFragment(), ImageFragment.FRAGMENT_TAG);
+                                    replaceFragment(new ImageFragmentImpl(), ImageFragmentImpl.FRAGMENT_TAG);
+                                    break;
+                                case R.id.nav_photo:
+                                    replaceFragment(new PhotoFragment(), PhotoFragment.FRAGMENT_TAG);
                                     break;
                                 case R.id.nav_logout:
                                     finish();
