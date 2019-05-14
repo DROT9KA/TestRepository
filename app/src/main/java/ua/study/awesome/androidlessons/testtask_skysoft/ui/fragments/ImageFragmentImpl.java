@@ -47,8 +47,6 @@ public class ImageFragmentImpl extends BaseFragment implements ImageView {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        setHasOptionsMenu(true);
-
         settingTitle();
         checkPermission();
     }

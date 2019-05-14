@@ -53,8 +53,6 @@ public class SpannableStringFragment extends BaseFragment {
 
         init();
 
-        setHasOptionsMenu(true);
-
         setSpannableText();
         setStyleSpannableText();
         buildSpanString();

@@ -19,6 +19,7 @@ public abstract class BaseFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(provideView(), container, false);
         Unbinder unbinder = ButterKnife.bind(butterKnifeBind(), view);
+        setHasOptionsMenu(true);
         return view;
     }
 

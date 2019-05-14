@@ -71,8 +71,6 @@ public class BankFragmentImpl extends BaseFragment implements BankView {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        setHasOptionsMenu(true);
-
         Realm mRealm = Realm.getDefaultInstance();
         final RealmResults<RealmBankModelEntity> result = mRealm.where(RealmBankModelEntity.class).findAll();
 

@@ -53,6 +53,9 @@ public class SignInUpFragment extends BaseFragment {
     }
 
     public void init(){
-        Objects.requireNonNull(((SignInUpActivity) Objects.requireNonNull(getActivity())).getSupportActionBar()).setTitle(title);
+        Objects.requireNonNull(((SignInUpActivity) Objects.requireNonNull(getActivity())).
+                getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
+        Objects.requireNonNull(((SignInUpActivity) Objects.requireNonNull(getActivity())).
+                getSupportActionBar()).setTitle(title);
     }
 }

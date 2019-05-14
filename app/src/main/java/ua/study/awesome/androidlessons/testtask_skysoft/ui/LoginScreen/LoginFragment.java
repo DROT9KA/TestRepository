@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -43,7 +44,22 @@ public class LoginFragment extends BaseFragment {
         return this;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            getActivity().onBackPressed();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
     public void init(){
-        Objects.requireNonNull(((SignInUpActivity) Objects.requireNonNull(getActivity())).getSupportActionBar()).setTitle(title);
+        Objects.requireNonNull(((SignInUpActivity) Objects.requireNonNull(getActivity())).
+                getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(((SignInUpActivity) Objects.requireNonNull(getActivity())).
+                getSupportActionBar()).setHomeAsUpIndicator(R.drawable.ic_arrow_back_white_24dp);
+        Objects.requireNonNull(((SignInUpActivity) Objects.requireNonNull(getActivity())).
+                getSupportActionBar()).setTitle(title);
     }
 }

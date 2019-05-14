@@ -9,6 +9,8 @@ import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.FileProvider;
+import android.support.v4.view.GravityCompat;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -20,6 +22,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import ua.study.awesome.androidlessons.testtask_skysoft.BuildConfig;
 import ua.study.awesome.androidlessons.testtask_skysoft.R;
+import ua.study.awesome.androidlessons.testtask_skysoft.ui.MainActivity;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -86,6 +89,17 @@ public class PhotoFragment extends BaseFragment {
                 }
             }
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                ((MainActivity) Objects.requireNonNull(getActivity())).drawerLayout.openDrawer(GravityCompat.START);
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     private Uri generateFileUri(int type) {
