@@ -48,5 +48,12 @@
     <string name="images">Images</string>
     <string name="my_photo">Photo</string>
     <string name="my_video">Video</string>
+    <string name="sign_in">Sign In</string>
+    <string name="password">Password</string>
+    <string name="username_email">Username/Email</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="sign_up">Sign Up</string>
 
 </resources>

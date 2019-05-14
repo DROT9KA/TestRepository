@@ -7,7 +7,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.view.MenuItem;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import ua.study.awesome.androidlessons.testtask_skysoft.R;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.fragments.BankFragmentImpl;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.fragments.DeviceFragment;
@@ -27,13 +26,14 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        ButterKnife.bind(this);
-
         navigationItemListen();
 
-//        ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.INTERNET}, );
+        addFragment(BankFragmentImpl.newInstance("Privat ATM"), R.id.fragm_container);
+    }
 
-        addFragment(BankFragmentImpl.newInstance("Privat ATM"));
+    @Override
+    public Object butterKnifeBind() {
+        return this;
     }
 
     @Override
@@ -54,19 +54,24 @@ public class MainActivity extends BaseActivity {
 
                             switch (menuItem.getItemId()) {
                                 case R.id.nav_bank:
-                                    replaceFragment(BankFragmentImpl.newInstance("Privat ATM"), BankFragmentImpl.FRAGMENT_TAG);
+                                    replaceFragment(BankFragmentImpl.newInstance("Privat ATM"),
+                                            BankFragmentImpl.FRAGMENT_TAG, R.id.fragm_container);
                                     break;
                                 case R.id.nav_device:
-                                    replaceFragment(new DeviceFragment(), DeviceFragment.FRAGMENT_TEG);
+                                    replaceFragment(new DeviceFragment(),
+                                            DeviceFragment.FRAGMENT_TEG, R.id.fragm_container);
                                     break;
                                 case R.id.nav_spannable:
-                                    replaceFragment(new SpannableStringFragment(), SpannableStringFragment.FRAGMENT_TAG);
+                                    replaceFragment(new SpannableStringFragment(),
+                                            SpannableStringFragment.FRAGMENT_TAG, R.id.fragm_container);
                                     break;
                                 case R.id.nav_image:
-                                    replaceFragment(new ImageFragmentImpl(), ImageFragmentImpl.FRAGMENT_TAG);
+                                    replaceFragment(new ImageFragmentImpl(),
+                                            ImageFragmentImpl.FRAGMENT_TAG, R.id.fragm_container);
                                     break;
                                 case R.id.nav_photo:
-                                    replaceFragment(new PhotoFragment(), PhotoFragment.FRAGMENT_TAG);
+                                    replaceFragment(new PhotoFragment(),
+                                            PhotoFragment.FRAGMENT_TAG, R.id.fragm_container);
                                     break;
                                 case R.id.nav_logout:
                                     finish();

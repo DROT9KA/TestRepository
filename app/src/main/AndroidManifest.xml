@@ -35,6 +35,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.MainActivity"/>
+        <activity android:name=".ui.LoginScreen.SignInUpActivity"/>
+
     </application>
 
 </manifest>

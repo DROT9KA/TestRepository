@@ -149,7 +149,7 @@ public class BankFragmentImpl extends BaseFragment implements BankView {
     @Override
     public void showDetailFrag(int number) {
         ((MainActivity) Objects.requireNonNull(getActivity())).replaceFragment(DetailBankFragment
-                .newInstance(number), DetailBankFragment.FRAGMENT_TAG);
+                .newInstance(number), DetailBankFragment.FRAGMENT_TAG,  R.id.fragm_container);
     }
 
     @Override

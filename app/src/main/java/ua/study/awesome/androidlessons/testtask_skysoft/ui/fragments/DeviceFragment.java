@@ -65,30 +65,6 @@ public class DeviceFragment extends BaseFragment {
     @BindView(R.id.tv_empty)
     TextView tvEmpty;
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_device, container, false);
-        Unbinder unbinder = ButterKnife.bind(this, v);
-
-        adapter = new DeviceAdapter(getContext());
-        adapter.setOnItemClickListener(new ClickListener() {
-            @Override
-            public void onItemClick(int position) {
-                DeviceEntity device = adapter.getDevicesFiltered().get(position);
-
-                showDetailFrag(device.getId(), device.getName(), device.getDescription());
-            }
-        });
-
-        init();
-
-        searchDevice();
-
-        return v;
-    }
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -140,7 +116,7 @@ public class DeviceFragment extends BaseFragment {
 
     void showDetailFrag(int id, String name, String description) {
         ((MainActivity) Objects.requireNonNull(getActivity())).replaceFragment(DetailDeviceFragment
-                .newInstance(id, name, description),DetailBankFragment.FRAGMENT_TAG);
+                .newInstance(id, name, description),DetailBankFragment.FRAGMENT_TAG, R.id.fragm_container);
     }
 
     public void searchDevice(){
