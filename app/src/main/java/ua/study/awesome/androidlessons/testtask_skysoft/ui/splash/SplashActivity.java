@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
-import ua.study.awesome.androidlessons.testtask_skysoft.ui.LoginScreen.SignInUpActivity;
+import ua.study.awesome.androidlessons.testtask_skysoft.ui.authorization.SignInUpActivity;
 
 public class SplashActivity extends AppCompatActivity {
 

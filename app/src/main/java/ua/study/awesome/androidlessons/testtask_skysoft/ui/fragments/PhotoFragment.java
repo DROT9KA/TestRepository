@@ -56,11 +56,6 @@ public class PhotoFragment extends BaseFragment {
         return R.layout.fragment_photo;
     }
 
-    @Override
-    public Object butterKnifeBind() {
-        return this;
-    }
-
     @OnClick(R.id.btn_Photo)
     public void onClickPhoto() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);

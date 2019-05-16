@@ -1,4 +1,4 @@
-package ua.study.awesome.androidlessons.testtask_skysoft.ui.LoginScreen;
+package ua.study.awesome.androidlessons.testtask_skysoft.ui.authorization;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,6 +11,8 @@ import java.util.Objects;
 import butterknife.BindView;
 import butterknife.OnClick;
 import ua.study.awesome.androidlessons.testtask_skysoft.R;
+import ua.study.awesome.androidlessons.testtask_skysoft.ui.authorization.registration.RegistrationFragment;
+import ua.study.awesome.androidlessons.testtask_skysoft.ui.authorization.login.LoginFragment;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.fragments.BaseFragment;
 
 public class SignInUpFragment extends BaseFragment {
@@ -33,11 +35,6 @@ public class SignInUpFragment extends BaseFragment {
     @Override
     public int provideView() {
         return R.layout.fragmnent_sign_in_up;
-    }
-
-    @Override
-    public Object butterKnifeBind() {
-        return this;
     }
 
     @OnClick(R.id.btn_sign_in)

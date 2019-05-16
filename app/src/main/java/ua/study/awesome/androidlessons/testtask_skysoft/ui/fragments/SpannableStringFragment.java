@@ -67,11 +67,6 @@ public class SpannableStringFragment extends BaseFragment {
         return R.layout.fragment_spannable_string;
     }
 
-    @Override
-    public Object butterKnifeBind() {
-        return this;
-    }
-
     public void init() {
         Objects.requireNonNull(((MainActivity) Objects.requireNonNull(getActivity())).
                 getSupportActionBar()).setHomeAsUpIndicator(R.drawable.ic_menu_white);

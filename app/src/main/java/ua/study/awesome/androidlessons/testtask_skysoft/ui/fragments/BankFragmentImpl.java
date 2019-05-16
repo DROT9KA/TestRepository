@@ -15,16 +15,14 @@ import android.widget.Toast;
 import java.util.Objects;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import io.realm.Realm;
 import io.realm.RealmResults;
 import ua.study.awesome.androidlessons.testtask_skysoft.R;
 import ua.study.awesome.androidlessons.testtask_skysoft.data.entity.RealmBankModelEntity;
+import ua.study.awesome.androidlessons.testtask_skysoft.data.presenters.BankPresenterImpl;
 import ua.study.awesome.androidlessons.testtask_skysoft.data.response.BankListResponse;
 import ua.study.awesome.androidlessons.testtask_skysoft.interfaces.BankView;
 import ua.study.awesome.androidlessons.testtask_skysoft.interfaces.ClickListener;
-import ua.study.awesome.androidlessons.testtask_skysoft.data.presenters.BankPresenterImpl;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.MainActivity;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.adapter.BankAdapter;
 
@@ -93,11 +91,6 @@ public class BankFragmentImpl extends BaseFragment implements BankView {
     }
 
     @Override
-    public Object butterKnifeBind() {
-        return this;
-    }
-
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             ((MainActivity) Objects.requireNonNull(getActivity())).drawerLayout.openDrawer(GravityCompat.START);
@@ -147,7 +140,7 @@ public class BankFragmentImpl extends BaseFragment implements BankView {
     @Override
     public void showDetailFrag(int number) {
         ((MainActivity) Objects.requireNonNull(getActivity())).replaceFragment(DetailBankFragment
-                .newInstance(number), DetailBankFragment.FRAGMENT_TAG,  R.id.fragm_container);
+                .newInstance(number), DetailBankFragment.FRAGMENT_TAG, R.id.fragm_container);
     }
 
     @Override

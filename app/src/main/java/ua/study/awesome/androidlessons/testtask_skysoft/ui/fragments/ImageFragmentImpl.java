@@ -2,10 +2,7 @@ package ua.study.awesome.androidlessons.testtask_skysoft.ui.fragments;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -15,15 +12,12 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import ua.study.awesome.androidlessons.testtask_skysoft.R;
 import ua.study.awesome.androidlessons.testtask_skysoft.data.presenters.ImagePresenterImpl;
 import ua.study.awesome.androidlessons.testtask_skysoft.interfaces.ImageView;
@@ -54,11 +48,6 @@ public class ImageFragmentImpl extends BaseFragment implements ImageView {
     @Override
     public int provideView() {
         return R.layout.fragment_image;
-    }
-
-    @Override
-    public Object butterKnifeBind() {
-        return this;
     }
 
     @Override

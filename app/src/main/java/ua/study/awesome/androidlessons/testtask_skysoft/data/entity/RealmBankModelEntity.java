@@ -4,7 +4,7 @@ import io.realm.RealmObject;
 
 public class RealmBankModelEntity extends RealmObject {
 
-   // @PrimaryKey
+    // @PrimaryKey
     private String type;
     private String cityRU;
     private String cityUA;

@@ -32,11 +32,6 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    public Object butterKnifeBind() {
-        return this;
-    }
-
-    @Override
     protected int getLayoutResourceId() {
         return R.layout.activity_main;
     }

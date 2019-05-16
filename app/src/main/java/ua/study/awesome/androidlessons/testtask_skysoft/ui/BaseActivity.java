@@ -20,11 +20,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutResourceId());
 
-        ButterKnife.bind((Activity) butterKnifeBind());
+        ButterKnife.bind(this);
 
     }
-
-    public abstract Object butterKnifeBind();
 
     protected abstract int getLayoutResourceId();
 

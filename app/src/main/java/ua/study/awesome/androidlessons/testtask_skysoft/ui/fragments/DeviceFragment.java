@@ -3,18 +3,15 @@ package ua.study.awesome.androidlessons.testtask_skysoft.ui.fragments;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Filter;
 import android.widget.TextView;
@@ -23,11 +20,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
-import java.util.Random;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import ua.study.awesome.androidlessons.testtask_skysoft.R;
 import ua.study.awesome.androidlessons.testtask_skysoft.data.comparators.DeviceDescriptionComparator;
 import ua.study.awesome.androidlessons.testtask_skysoft.data.comparators.DeviceIdComparator;
@@ -40,8 +34,6 @@ import ua.study.awesome.androidlessons.testtask_skysoft.ui.adapter.DeviceAdapter
 public class DeviceFragment extends BaseFragment {
 
     public static final String FRAGMENT_TEG = DeviceFragment.class.getSimpleName();
-
-    private static final String TAG = "myLogs";
 
     private DeviceEntity deviceEntityOne;
     private DeviceEntity deviceEntityTwo;
@@ -94,11 +86,6 @@ public class DeviceFragment extends BaseFragment {
         return R.layout.fragment_device;
     }
 
-    @Override
-    public Object butterKnifeBind() {
-        return this;
-    }
-
     void init() {
         adapter.setDeviceEntities(deviceEntities);
 
@@ -114,10 +101,10 @@ public class DeviceFragment extends BaseFragment {
 
     void showDetailFrag(int id, String name, String description) {
         ((MainActivity) Objects.requireNonNull(getActivity())).replaceFragment(DetailDeviceFragment
-                .newInstance(id, name, description),DetailBankFragment.FRAGMENT_TAG, R.id.fragm_container);
+                .newInstance(id, name, description), DetailBankFragment.FRAGMENT_TAG, R.id.fragm_container);
     }
 
-    public void searchDevice(){
+    public void searchDevice() {
 
         editSearch.addTextChangedListener(new TextWatcher() {
             @Override
@@ -136,9 +123,9 @@ public class DeviceFragment extends BaseFragment {
                     @Override
                     public void onFilterComplete(int count) {
 
-                        if (adapter.getDevicesFiltered().isEmpty()){
+                        if (adapter.getDevicesFiltered().isEmpty()) {
                             tvEmpty.setVisibility(View.VISIBLE);
-                        }else {
+                        } else {
                             tvEmpty.setVisibility(View.GONE);
                         }
 
@@ -157,7 +144,7 @@ public class DeviceFragment extends BaseFragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.sort_by_id:
                 sortById();
                 break;
@@ -174,7 +161,7 @@ public class DeviceFragment extends BaseFragment {
         return super.onOptionsItemSelected(item);
     }
 
-    public void sortById(){
+    public void sortById() {
 //        adapter.removeDevices();
         settingListDevices();
         Collections.sort(deviceEntities, new DeviceIdComparator());
@@ -182,7 +169,7 @@ public class DeviceFragment extends BaseFragment {
         recyclerDevice.setAdapter(adapter);
     }
 
-    public void sortByName(){
+    public void sortByName() {
 //        adapter.removeDevices();
         settingListDevices();
         Collections.sort(deviceEntities, new DeviceNameComparator());
@@ -190,7 +177,7 @@ public class DeviceFragment extends BaseFragment {
         recyclerDevice.setAdapter(adapter);
     }
 
-    public void sortByDescription(){
+    public void sortByDescription() {
 //        adapter.removeDevices();
         settingListDevices();
         Collections.sort(deviceEntities, new DeviceDescriptionComparator());
