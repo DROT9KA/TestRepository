@@ -8,6 +8,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import ua.study.awesome.androidlessons.testtask_skysoft.R;
+import ua.study.awesome.androidlessons.testtask_skysoft.data.entity.RealmBankModelEntity;
 import ua.study.awesome.androidlessons.testtask_skysoft.data.response.BankResponse;
 import ua.study.awesome.androidlessons.testtask_skysoft.interfaces.ClickListener;
 
@@ -36,6 +37,8 @@ public class BankViewHolder extends RecyclerView.ViewHolder{
         this.clickListener = clickListener;
     }
 
+    String a = BankViewHolder.class.getSimpleName();
+
     public void onBindBank(BankResponse bankResponse){
         latitude.setText("Широта - " + bankResponse.getLatitude());
         longitude.setText("Довгота - " + bankResponse.getLongitude());
@@ -47,6 +50,9 @@ public class BankViewHolder extends RecyclerView.ViewHolder{
     @OnClick(R.id.bank_item)
     void onBankClick() {
         clickListener.onItemClick(getAdapterPosition());
+        new RealmBankModelEntity(){
+
+        };
     }
 
 }

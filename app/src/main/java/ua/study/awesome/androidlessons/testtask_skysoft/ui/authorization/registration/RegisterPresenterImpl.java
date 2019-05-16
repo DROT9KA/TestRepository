@@ -3,12 +3,15 @@ package ua.study.awesome.androidlessons.testtask_skysoft.ui.authorization.regist
 import android.content.SharedPreferences;
 import android.support.design.widget.TextInputEditText;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 
 import java.util.Objects;
 import java.util.regex.Pattern;
 
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.authorization.data.UserEntity;
+import ua.study.awesome.androidlessons.testtask_skysoft.ui.authorization.data.UserRepository;
+import ua.study.awesome.androidlessons.testtask_skysoft.ui.authorization.data.UserRepositoryImpl;
 import ua.study.awesome.androidlessons.testtask_skysoft.utils.AppConstans;
 
 public class RegisterPresenterImpl implements RegisterPresenter {
@@ -17,7 +20,7 @@ public class RegisterPresenterImpl implements RegisterPresenter {
 
     private SharedPreferences preferences;
 
-    private UserRepositoryImpl model = new UserRepositoryImpl();
+    private UserRepository model = new UserRepositoryImpl();
 
     @Override
     public void atachView(RegistrationFragment registrationFragment) {
@@ -77,8 +80,10 @@ public class RegisterPresenterImpl implements RegisterPresenter {
         }
 
         if (isCancel) {
-            view.onSuccessRegistration();
             model.onAddUser(new UserEntity(username, email, password));
+            Log.d("TAG", model.getUser(username).getEmail() + model.getUser(username).getPassword() + model.getUser(username).getUserName());
+         //   model.closeRealm();
+            view.onSuccessRegistration();
         }
     }
 

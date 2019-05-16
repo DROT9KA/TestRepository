@@ -22,6 +22,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/username_email"
             android:imeOptions="actionNext"
+            android:inputType="textCapWords"
             android:textCursorDrawable="@drawable/custom_edit_text_cursor" />
     </android.support.design.widget.TextInputLayout>
 
