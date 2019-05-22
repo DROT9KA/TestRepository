@@ -6,19 +6,20 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
 import android.view.MenuItem;
 
 import butterknife.BindView;
 import ua.study.awesome.androidlessons.testtask_skysoft.R;
+import ua.study.awesome.androidlessons.testtask_skysoft.ui.alarm_manager.AlarmManagerFragment;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.authorization.SignInUpActivity;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.authorization.data.UserRepository;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.authorization.data.UserRepositoryImpl;
-import ua.study.awesome.androidlessons.testtask_skysoft.ui.fragments.BankFragmentImpl;
-import ua.study.awesome.androidlessons.testtask_skysoft.ui.fragments.DeviceFragment;
-import ua.study.awesome.androidlessons.testtask_skysoft.ui.fragments.ImageFragmentImpl;
-import ua.study.awesome.androidlessons.testtask_skysoft.ui.fragments.PhotoFragment;
-import ua.study.awesome.androidlessons.testtask_skysoft.ui.fragments.SpannableStringFragment;
+import ua.study.awesome.androidlessons.testtask_skysoft.ui.bank_list.BankFragmentImpl;
+import ua.study.awesome.androidlessons.testtask_skysoft.ui.device_list.DeviceFragment;
+import ua.study.awesome.androidlessons.testtask_skysoft.ui.download_upload_retrofit.DownloadFragment;
+import ua.study.awesome.androidlessons.testtask_skysoft.ui.gallery.GalleryFragment;
+import ua.study.awesome.androidlessons.testtask_skysoft.ui.photo.PhotoFragment;
+import ua.study.awesome.androidlessons.testtask_skysoft.ui.spannable_string.SpannableStringFragment;
 import ua.study.awesome.androidlessons.testtask_skysoft.utils.AppConstans;
 
 public class MainActivity extends BaseActivity {
@@ -39,7 +40,7 @@ public class MainActivity extends BaseActivity {
 
         navigationItemListen();
 
-        addFragment(BankFragmentImpl.newInstance("Privat ATM"), R.id.fragm_container);
+        addFragment(BankFragmentImpl.getInstance("Privat ATM"), R.id.fragm_container);
     }
 
     @Override
@@ -71,30 +72,37 @@ public class MainActivity extends BaseActivity {
 
                             switch (menuItem.getItemId()) {
                                 case R.id.nav_bank:
-                                    replaceFragment(BankFragmentImpl.newInstance("Privat ATM"),
+                                    replaceFragment(BankFragmentImpl.getInstance("Privat ATM"),
                                             BankFragmentImpl.FRAGMENT_TAG, R.id.fragm_container);
                                     break;
                                 case R.id.nav_device:
-                                    replaceFragment(new DeviceFragment(),
+                                    replaceFragment(DeviceFragment.getInstance("Device Search"),
                                             DeviceFragment.FRAGMENT_TEG, R.id.fragm_container);
                                     break;
                                 case R.id.nav_spannable:
-                                    replaceFragment(new SpannableStringFragment(),
+                                    replaceFragment(SpannableStringFragment.getInstance("Spannsble String"),
                                             SpannableStringFragment.FRAGMENT_TAG, R.id.fragm_container);
                                     break;
-                                case R.id.nav_image:
-                                    replaceFragment(new ImageFragmentImpl(),
-                                            ImageFragmentImpl.FRAGMENT_TAG, R.id.fragm_container);
+                                case R.id.nav_gallery:
+                                    replaceFragment(GalleryFragment.getInstance("Images from gallery"),
+                                            GalleryFragment.FRAGMENT_TAG, R.id.fragm_container);
                                     break;
                                 case R.id.nav_photo:
-                                    replaceFragment(new PhotoFragment(),
+                                    replaceFragment(PhotoFragment.getInstance("Photo"),
                                             PhotoFragment.FRAGMENT_TAG, R.id.fragm_container);
                                     break;
+                                case R.id.nav_retrofit:
+                                    replaceFragment(DownloadFragment.getInstance("Downloader images"),
+                                            DownloadFragment.FRAGMENT_TAG, R.id.fragm_container);
+                                    break;
+
+                                case R.id.alarm_manager:
+                                    replaceFragment(AlarmManagerFragment.getInstance("AlarmBroadcast Manager"),
+                                            AlarmManagerFragment.FRAGMENT_TAG, R.id.fragm_container);
+                                    break;
+
                                 case R.id.nav_logout:
-                                    String s = model.getUser(getREGISTER_USER_NAME()).getEmail();
-                                    Boolean b = true;
                                     model.onRemoveUser(getREGISTER_USER_NAME());
-                                    Log.d("TAG", "massage");
                                     startLoginActivity();
                                     break;
                             }

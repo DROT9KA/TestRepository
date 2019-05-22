@@ -17,12 +17,20 @@
             android:title="@string/spannable" />
 
         <item
-            android:id="@+id/nav_image"
-            android:title="@string/images" />
+            android:id="@+id/nav_gallery"
+            android:title="@string/gallery" />
 
         <item
             android:id="@+id/nav_photo"
             android:title="@string/my_photo" />
+
+        <item
+            android:id="@+id/nav_retrofit"
+            android:title="@string/retrofit" />
+
+        <item
+            android:id="@+id/alarm_manager"
+            android:title="@string/alarm_manager" />
 
     </group>
 

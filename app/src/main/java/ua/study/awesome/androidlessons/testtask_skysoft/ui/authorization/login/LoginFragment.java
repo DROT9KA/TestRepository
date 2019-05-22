@@ -6,9 +6,12 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.util.Objects;
 
@@ -17,9 +20,9 @@ import butterknife.OnClick;
 import ua.study.awesome.androidlessons.testtask_skysoft.R;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.MainActivity;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.authorization.SignInUpActivity;
-import ua.study.awesome.androidlessons.testtask_skysoft.ui.fragments.BaseFragment;
+import ua.study.awesome.androidlessons.testtask_skysoft.ui.BaseFragment;
 
-public class LoginFragment extends BaseFragment implements LoginView {
+public class LoginFragment extends BaseFragment implements LoginView, TextView.OnEditorActionListener {
 
     public static final String FRAGMENT_TAG = LoginFragment.class.getSimpleName();
 
@@ -59,13 +62,15 @@ public class LoginFragment extends BaseFragment implements LoginView {
     }
 
     @Override
-    public int provideView() {
+    public int getLayoutId() {
         return R.layout.fragment_login;
     }
 
     public void init(){
         presenter = new LoginPresenterImpl();
         presenter.atachView(this);
+
+        edtLoginPassword.setOnEditorActionListener(this);
 
         Objects.requireNonNull(((SignInUpActivity) Objects.requireNonNull(getActivity())).
                 getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
@@ -84,6 +89,14 @@ public class LoginFragment extends BaseFragment implements LoginView {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+        if(actionId == EditorInfo.IME_ACTION_DONE){
+            clickLogin();
+        }
+        return false;
     }
 
     @OnClick(R.id.btn_login)

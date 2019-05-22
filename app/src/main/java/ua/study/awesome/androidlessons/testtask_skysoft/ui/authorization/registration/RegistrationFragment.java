@@ -6,9 +6,12 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.util.Objects;
 
@@ -17,9 +20,9 @@ import butterknife.OnClick;
 import ua.study.awesome.androidlessons.testtask_skysoft.R;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.MainActivity;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.authorization.SignInUpActivity;
-import ua.study.awesome.androidlessons.testtask_skysoft.ui.fragments.BaseFragment;
+import ua.study.awesome.androidlessons.testtask_skysoft.ui.BaseFragment;
 
-public class RegistrationFragment extends BaseFragment implements RegisterView {
+public class RegistrationFragment extends BaseFragment implements RegisterView, TextView.OnEditorActionListener {
 
     public static final String FRAGMENT_TAG = RegistrationFragment.class.getSimpleName();
 
@@ -71,13 +74,15 @@ public class RegistrationFragment extends BaseFragment implements RegisterView {
     }
 
     @Override
-    public int provideView() {
+    public int getLayoutId() {
         return R.layout.fragment_registration;
     }
 
     private void init() {
         presenter = new RegisterPresenterImpl();
         presenter.atachView(this);
+
+        edtConfirmPassword.setOnEditorActionListener(this);
 
         Objects.requireNonNull(((SignInUpActivity) Objects.requireNonNull(getActivity())).
                 getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
@@ -96,6 +101,14 @@ public class RegistrationFragment extends BaseFragment implements RegisterView {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+        if(actionId == EditorInfo.IME_ACTION_DONE){
+            clickRegister();
+        }
+        return false;
     }
 
     @OnClick(R.id.btn_register)

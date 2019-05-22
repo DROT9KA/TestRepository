@@ -6,11 +6,16 @@ import android.text.TextUtils;
 
 import java.util.Objects;
 
+import ua.study.awesome.androidlessons.testtask_skysoft.ui.authorization.data.UserEntity;
+import ua.study.awesome.androidlessons.testtask_skysoft.ui.authorization.data.UserRepository;
+import ua.study.awesome.androidlessons.testtask_skysoft.ui.authorization.data.UserRepositoryImpl;
 import ua.study.awesome.androidlessons.testtask_skysoft.utils.AppConstans;
 
 public class LoginPresenterImpl implements LoginPresenter {
 
     private SharedPreferences preferences;
+
+    UserRepository model = new UserRepositoryImpl();
 
     private LoginFragment view;
 
@@ -38,7 +43,7 @@ public class LoginPresenterImpl implements LoginPresenter {
 
         if (TextUtils.isEmpty(password)) {
             isCancel = false;
-            view.onErrorPassword("Please enter login");
+            view.onErrorPassword("Please enter password");
         } else {
             view.disablePasswordError();
 
@@ -49,6 +54,7 @@ public class LoginPresenterImpl implements LoginPresenter {
         }
 
         if (isCancel) {
+            model.onAddUser(new UserEntity(login, getRegisterEmail(), password));
             view.onSuccessLogin();
         }
     }
@@ -56,7 +62,7 @@ public class LoginPresenterImpl implements LoginPresenter {
     private String getRegisterLogin() {
         preferences = view.getActivity().getSharedPreferences(AppConstans.PREFERENCE_NAME,
                 view.getActivity().MODE_PRIVATE);
-        String userName = preferences.getString(AppConstans.REGISTER_USER_NAME, "");
+        String userName = preferences.getString(AppConstans.REGISTER_USER_NAME, "").trim();
 
         return userName;
     }
@@ -64,7 +70,7 @@ public class LoginPresenterImpl implements LoginPresenter {
     private String getRegisterEmail() {
         preferences = view.getActivity().getSharedPreferences(AppConstans.PREFERENCE_NAME,
                 view.getActivity().MODE_PRIVATE);
-        String eMail = preferences.getString(AppConstans.REGISTER_E_MAIL, "");
+        String eMail = preferences.getString(AppConstans.REGISTER_E_MAIL, "").trim();
 
         return eMail;
     }
@@ -72,7 +78,7 @@ public class LoginPresenterImpl implements LoginPresenter {
     private String getRegisterPassword() {
         preferences = view.getActivity().getSharedPreferences(AppConstans.PREFERENCE_NAME,
                 view.getActivity().MODE_PRIVATE);
-        String password = preferences.getString(AppConstans.REGISTER_PASSWORD, "");
+        String password = preferences.getString(AppConstans.REGISTER_PASSWORD, "").trim();
 
         return password;
     }
@@ -86,17 +92,17 @@ public class LoginPresenterImpl implements LoginPresenter {
     }
 
     private boolean equalsLogin(String login) {
-        boolean bool = true;
+        boolean bool = false;
         if (login.equals(getRegisterLogin())) {
-            bool = false;
+            bool = true;
         }
         return bool;
     }
 
     private boolean equalsEmail(String email) {
-        boolean bool = true;
+        boolean bool = false;
         if (email.equals(getRegisterEmail())) {
-            bool = false;
+            bool = true;
         }
         return bool;
     }

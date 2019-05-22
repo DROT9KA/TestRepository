@@ -1,5 +1,6 @@
 package ua.study.awesome.androidlessons.testtask_skysoft.ui.authorization;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,9 +12,10 @@ import java.util.Objects;
 import butterknife.BindView;
 import butterknife.OnClick;
 import ua.study.awesome.androidlessons.testtask_skysoft.R;
+import ua.study.awesome.androidlessons.testtask_skysoft.ui.MainActivity;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.authorization.registration.RegistrationFragment;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.authorization.login.LoginFragment;
-import ua.study.awesome.androidlessons.testtask_skysoft.ui.fragments.BaseFragment;
+import ua.study.awesome.androidlessons.testtask_skysoft.ui.BaseFragment;
 
 public class SignInUpFragment extends BaseFragment {
 
@@ -26,6 +28,9 @@ public class SignInUpFragment extends BaseFragment {
     @BindView(R.id.btn_sign_up)
     Button btnSignUp;
 
+    @BindView(R.id.btn_quick_login)
+    Button btnQuick;
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -33,8 +38,16 @@ public class SignInUpFragment extends BaseFragment {
     }
 
     @Override
-    public int provideView() {
+    public int getLayoutId() {
         return R.layout.fragmnent_sign_in_up;
+    }
+
+    @OnClick(R.id.btn_quick_login)
+    public void quickLogin(){
+        startActivity(new Intent(getContext(), MainActivity.class));
+        if (getActivity() != null) {
+            getActivity().finish();
+        }
     }
 
     @OnClick(R.id.btn_sign_in)

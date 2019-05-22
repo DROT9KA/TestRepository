@@ -55,5 +55,10 @@
     <string name="email">Email</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="sign_up">Sign Up</string>
+    <string name="retrofit">Retrofit</string>
+    <string name="download">Download</string>
+    <string name="uplopad">uplopad</string>
+    <string name="gallery">Gallery</string>
+    <string name="alarm_manager">Alarm Manager</string>
 
 </resources>

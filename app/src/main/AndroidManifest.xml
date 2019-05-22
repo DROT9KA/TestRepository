@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:name=".CustomApplication"
@@ -34,8 +35,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.MainActivity"/>
-        <activity android:name=".ui.authorization.SignInUpActivity"/>
+        <activity android:name=".ui.MainActivity" />
+        <activity android:name=".ui.authorization.SignInUpActivity" />
+        <receiver android:name=".ui.alarm_manager.alert.AlarmBroadcast"/>
 
     </application>
 
