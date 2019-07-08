@@ -1,14 +1,33 @@
 package ua.study.awesome.androidlessons.testtask_skysoft.ui.bank_list.data.response;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class TimeWorkResponse {
 
+    @Expose
+    @SerializedName("mon")
     private String mon;
+    @Expose
+    @SerializedName("tue")
     private String tue;
+    @Expose
+    @SerializedName("wed")
     private String wed;
+    @Expose
+    @SerializedName("thu")
     private String thu;
+    @Expose
+    @SerializedName("fri")
     private String fri;
+    @Expose
+    @SerializedName("sat")
     private String sat;
+    @Expose
+    @SerializedName("sun")
     private String sun;
+    @Expose
+    @SerializedName("hol")
     private String hol;
 
     /*GETTERS & SETTERS*/

@@ -60,5 +60,6 @@
     <string name="uplopad">uplopad</string>
     <string name="gallery">Gallery</string>
     <string name="alarm_manager">Alarm Manager</string>
+    <string name="rxfragment">RxFragment</string>
 
 </resources>

@@ -32,6 +32,10 @@
             android:id="@+id/alarm_manager"
             android:title="@string/alarm_manager" />
 
+        <item
+            android:id="@+id/rx_fragment"
+            android:title="@string/rxfragment" />
+
     </group>
 
     <group

@@ -1,8 +1,9 @@
 package ua.study.awesome.androidlessons.testtask_skysoft.ui.bank_list.presenter;
 
-import ua.study.awesome.androidlessons.testtask_skysoft.ui.bank_list.BankFragmentImpl;
+import ua.study.awesome.androidlessons.testtask_skysoft.ui.bank_list.BankFragment;
 
 public interface BankPresenter {
-    void attachView(BankFragmentImpl bankFragmentImpl);
+    void attachView(BankFragment bankFragment);
+    void detachView();
     void loadBank();
 }

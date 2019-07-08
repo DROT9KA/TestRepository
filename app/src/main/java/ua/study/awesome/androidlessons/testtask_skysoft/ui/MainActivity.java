@@ -14,11 +14,12 @@ import ua.study.awesome.androidlessons.testtask_skysoft.ui.alarm_manager.AlarmMa
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.authorization.SignInUpActivity;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.authorization.data.UserRepository;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.authorization.data.UserRepositoryImpl;
-import ua.study.awesome.androidlessons.testtask_skysoft.ui.bank_list.BankFragmentImpl;
+import ua.study.awesome.androidlessons.testtask_skysoft.ui.bank_list.BankFragment;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.device_list.DeviceFragment;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.download_upload_retrofit.DownloadFragment;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.gallery.GalleryFragment;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.photo.PhotoFragment;
+import ua.study.awesome.androidlessons.testtask_skysoft.ui.rx_search.RxSearchFragment;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.spannable_string.SpannableStringFragment;
 import ua.study.awesome.androidlessons.testtask_skysoft.utils.AppConstans;
 
@@ -40,7 +41,7 @@ public class MainActivity extends BaseActivity {
 
         navigationItemListen();
 
-        addFragment(BankFragmentImpl.getInstance("Privat ATM"), R.id.fragm_container);
+        addFragment(BankFragment.getInstance("Privat ATM"), R.id.fragm_container);
     }
 
     @Override
@@ -72,8 +73,8 @@ public class MainActivity extends BaseActivity {
 
                             switch (menuItem.getItemId()) {
                                 case R.id.nav_bank:
-                                    replaceFragment(BankFragmentImpl.getInstance("Privat ATM"),
-                                            BankFragmentImpl.FRAGMENT_TAG, R.id.fragm_container);
+                                    replaceFragment(BankFragment.getInstance("Privat ATM"),
+                                            BankFragment.FRAGMENT_TAG, R.id.fragm_container);
                                     break;
                                 case R.id.nav_device:
                                     replaceFragment(DeviceFragment.getInstance("Device Search"),
@@ -99,6 +100,11 @@ public class MainActivity extends BaseActivity {
                                 case R.id.alarm_manager:
                                     replaceFragment(AlarmManagerFragment.getInstance("AlarmBroadcast Manager"),
                                             AlarmManagerFragment.FRAGMENT_TAG, R.id.fragm_container);
+                                    break;
+
+                                case R.id.rx_fragment:
+                                    replaceFragment(RxSearchFragment.getInstance("RX Search"),
+                                            RxSearchFragment.FRAGMENT_TAG, R.id.fragm_container);
                                     break;
 
                                 case R.id.nav_logout:

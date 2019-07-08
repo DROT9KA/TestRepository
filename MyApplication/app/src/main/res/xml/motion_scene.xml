@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetStart="@layout/position_first"
+        motion:constraintSetEnd="@layout/position_sacond"
+        motion:duration="1000">
+        <OnSwipe
+            motion:touchAnchorId="@+id/tv_plane_name"
+            motion:touchAnchorSide="right"
+            motion:dragDirection="dragRight" />
+    </Transition>
+
+</MotionScene>

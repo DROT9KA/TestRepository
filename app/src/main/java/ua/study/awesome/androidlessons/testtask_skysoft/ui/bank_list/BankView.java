@@ -1,11 +1,13 @@
 package ua.study.awesome.androidlessons.testtask_skysoft.ui.bank_list;
 
-import ua.study.awesome.androidlessons.testtask_skysoft.ui.bank_list.data.response.BankListResponse;
+import java.util.List;
+
+import ua.study.awesome.androidlessons.testtask_skysoft.ui.bank_list.data.Model.BanksModel;
 
 public interface BankView {
 
-    void onBanksLoaded(BankListResponse bankListResponse);
+    void onBanksLoaded(List<BanksModel> bankListResponse);
     void showDetailFrag(int number);
     void hideProgress();
-    void showToast();
+    void showToast(String string);
 }

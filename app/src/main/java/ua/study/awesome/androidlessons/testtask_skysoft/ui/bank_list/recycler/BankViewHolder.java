@@ -8,9 +8,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import ua.study.awesome.androidlessons.testtask_skysoft.R;
-import ua.study.awesome.androidlessons.testtask_skysoft.ui.bank_list.data.RealmBankModelEntity;
-import ua.study.awesome.androidlessons.testtask_skysoft.ui.bank_list.data.response.BankResponse;
 import ua.study.awesome.androidlessons.testtask_skysoft.interfaces.ClickListener;
+import ua.study.awesome.androidlessons.testtask_skysoft.ui.bank_list.data.Model.BanksModel;
 
 public class BankViewHolder extends RecyclerView.ViewHolder{
 
@@ -37,20 +36,19 @@ public class BankViewHolder extends RecyclerView.ViewHolder{
         this.clickListener = clickListener;
     }
 
-    public void onBindBank(BankResponse bankResponse){
-        latitude.setText("Широта - " + bankResponse.getLatitude());
-        longitude.setText("Довгота - " + bankResponse.getLongitude());
-        placeUa.setText(bankResponse.getPlaceUa());
-        type.setText(bankResponse.getType());
-        fullAddressUa.setText(bankResponse.getFullAddressUa());
+    public void onBindBank(BanksModel banksModel){
+        latitude.setText("Широта - " + banksModel.getLatitude());
+        longitude.setText("Довгота - " + banksModel.getLongitude());
+        placeUa.setText(banksModel.getPlaceUa());
+        type.setText(banksModel.getType());
+        fullAddressUa.setText(banksModel.getFullAddressUa());
     }
 
     @OnClick(R.id.bank_item)
     void onBankClick() {
         clickListener.onItemClick(getAdapterPosition());
-        new RealmBankModelEntity(){
-
-        };
+//        new BanksEntity(){
+//        };
     }
 
 }

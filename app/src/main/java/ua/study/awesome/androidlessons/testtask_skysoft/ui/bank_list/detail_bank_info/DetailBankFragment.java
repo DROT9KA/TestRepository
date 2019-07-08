@@ -17,7 +17,7 @@ import butterknife.OnClick;
 import io.realm.Realm;
 import io.realm.RealmResults;
 import ua.study.awesome.androidlessons.testtask_skysoft.R;
-import ua.study.awesome.androidlessons.testtask_skysoft.ui.bank_list.data.RealmBankModelEntity;
+import ua.study.awesome.androidlessons.testtask_skysoft.ui.bank_list.data.Entity.BanksEntity;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.MainActivity;
 import ua.study.awesome.androidlessons.testtask_skysoft.ui.BaseFragment;
 
@@ -95,8 +95,9 @@ public class DetailBankFragment extends BaseFragment {
 
     void showDetails() {
         Realm mRealm = Realm.getDefaultInstance();
-        final RealmResults<RealmBankModelEntity> result = mRealm.where(RealmBankModelEntity.class).findAll();
+        final RealmResults<BanksEntity> result = mRealm.where(BanksEntity.class).findAll();
 
+        int s = result.size();
         tvDetail.setText("Тип " + result.get(number).getType() + "\n"
                 + result.get(number).getFullAddressEn() + "\n"
                 + result.get(number).getFullAddressRu() + "\n"

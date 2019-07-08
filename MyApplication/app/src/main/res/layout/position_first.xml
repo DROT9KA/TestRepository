@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layoutDescription="@xml/test_scene"
+    android:layout_width="match_parent"
+    android:layout_height="80dp">
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/iv_internet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="8dp"
+        android:tint="@color/colorResourcesBlueTint"
+        app:layout_constraintEnd_toStartOf="@+id/tv_plane_name"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/vector"/>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_plane_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/colorTextBlack"
+        android:textAllCaps="true"
+        android:textSize="16sp"
+        android:text="CREDIT BALANCE"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_internet"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iv_internet"
+        app:layout_constraintTop_toTopOf="@+id/iv_internet"/>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/iv_giftbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textSize="20sp"
+        android:textColor="@color/colorTextBlack"
+        android:textStyle="bold"
+        android:text="$2.00"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_internet"
+        app:layout_constraintBottom_toTopOf="@+id/div_credit_balance"/>
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/iv_arrow_to_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:padding="4dp"
+        android:rotation="-90"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_giftbox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iv_internet"
+        app:srcCompat="@drawable/shape"/>
+
+    <View
+        android:id="@+id/div_credit_balance"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/list_divider_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+</android.support.constraint.ConstraintLayout>

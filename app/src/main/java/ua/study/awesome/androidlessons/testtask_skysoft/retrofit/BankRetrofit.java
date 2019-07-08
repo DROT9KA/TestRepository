@@ -1,5 +1,7 @@
 package ua.study.awesome.androidlessons.testtask_skysoft.retrofit;
 
+import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -23,6 +25,7 @@ public class BankRetrofit {
 
         retrofit = new Retrofit.Builder()
                 .baseUrl(AppConstans.BASE_BANK_URL)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();

@@ -1,18 +1,45 @@
 package ua.study.awesome.androidlessons.testtask_skysoft.ui.bank_list.data.response;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class BankResponse {
 
+    @Expose
+    @SerializedName("type")
     private String type;
+    @Expose
+    @SerializedName("cityRU")
     private String cityRU;
+    @Expose
+    @SerializedName("cityUA")
     private String cityUA;
+    @Expose
+    @SerializedName("cityEN")
     private String cityEN;
+    @Expose
+    @SerializedName("fullAddressRu")
     private String fullAddressRu;
+    @Expose
+    @SerializedName("fullAddressUa")
     private String fullAddressUa;
+    @Expose
+    @SerializedName("fullAddressEn")
     private String fullAddressEn;
+    @Expose
+    @SerializedName("placeRu")
     private String placeRu;
+    @Expose
+    @SerializedName("placeUa")
     private String placeUa;
+    @Expose
+    @SerializedName("latitude")
     private double latitude;
+    @Expose
+    @SerializedName("longitude")
     private double longitude;
+    @Expose
+    @SerializedName("tw")
     private TimeWorkResponse tw;
 
     /*GETTERS & SETTERS*/

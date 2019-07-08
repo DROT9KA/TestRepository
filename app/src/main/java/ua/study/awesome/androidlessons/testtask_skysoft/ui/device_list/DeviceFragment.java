@@ -103,9 +103,7 @@ public class DeviceFragment extends BaseFragment {
         init();
 
         searchDevice();
-
     }
-
     @Override
     public int getLayoutId() {
         return R.layout.fragment_device;
